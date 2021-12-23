@@ -23,7 +23,7 @@ import java.security.GeneralSecurityException;
 public class YoutubeAPI {
     private static final String APPLICATION_NAME = "ProyectoAndroid";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-
+    private static String API = "AIzaSyCoEz_Uk6fPutUgIpi8YzY6QCiZidLJP74";
     /**
      * Build and return an authorized API client service.
      *
@@ -48,12 +48,14 @@ public class YoutubeAPI {
      *
      * @throws GeneralSecurityException, IOException, GoogleJsonResponseException
      */
-
+    public static String getAPI () {
+        return API;
+    }
     public static String buscaVideos(String titulo) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
         YouTube.Search.List request = youtubeService.search()
-                .list("snippet").setKey("AIzaSyCoEz_Uk6fPutUgIpi8YzY6QCiZidLJP74");
+                .list("snippet").setKey(API);
         SearchListResponse response = request.setQ(titulo).execute();
         return response.getItems().get(0).getId().getVideoId();
     }

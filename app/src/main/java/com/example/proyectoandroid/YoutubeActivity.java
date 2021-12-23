@@ -18,7 +18,6 @@ import java.security.GeneralSecurityException;
 
 public class YoutubeActivity extends YouTubeBaseActivity {
 
-    String api_key = "AIzaSyDEUQWH4aJOskd6-fcXMnQPSYqbBAGUH40";
     private TextView tvLink;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,7 @@ public class YoutubeActivity extends YouTubeBaseActivity {
         tvLink= findViewById(R.id.tvLink);
         tvLink.setText(video[0]);
         ytPlayer.initialize(
-                api_key,
+                YoutubeAPI.getAPI(),
                 new YouTubePlayer.OnInitializedListener() {
                     // Implement two methods by clicking on red
                     // error bulb inside onInitializationSuccess
