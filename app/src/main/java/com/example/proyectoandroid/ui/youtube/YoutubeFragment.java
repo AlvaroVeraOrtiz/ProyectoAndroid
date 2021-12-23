@@ -23,7 +23,7 @@ public class YoutubeFragment extends Fragment {
         binding = FragmentYoutubeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        binding.ptText.setText("Buenos dias");
+        binding.ptText.setText("");
         binding.btBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

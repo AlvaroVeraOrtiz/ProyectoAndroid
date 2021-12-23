@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectoandroid.Resources.YoutubeAPI;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class YoutubeActivity extends YouTubeBaseActivity {
 
@@ -23,11 +27,35 @@ public class YoutubeActivity extends YouTubeBaseActivity {
 
         // Get reference to the view of Video player
         YouTubePlayerView ytPlayer = (YouTubePlayerView)findViewById(R.id.ytPlayer);
-        String video = getIntent().getExtras().getString("video");
+        final String[] video = {""};
+        Thread thread;
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    video[0] = YoutubeAPI.buscaVideos(getIntent().getExtras().getString("video"));
+                } catch (GeneralSecurityException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         tvLink= findViewById(R.id.tvLink);
-        tvLink.setText(video);
-
+        tvLink.setText(video[0]);
         ytPlayer.initialize(
                 api_key,
                 new YouTubePlayer.OnInitializedListener() {
@@ -42,7 +70,7 @@ public class YoutubeActivity extends YouTubeBaseActivity {
                             YouTubePlayer.Provider provider,
                             YouTubePlayer youTubePlayer, boolean b)
                     {
-                        youTubePlayer.loadVideo(video);
+                        youTubePlayer.loadVideo(video[0]);
                         youTubePlayer.play();
                     }
 
