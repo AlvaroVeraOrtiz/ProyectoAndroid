@@ -5,9 +5,28 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_inicio"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:title="@string/inicio" />
+        <item
+            android:id="@+id/lista"
+            android:title="@string/list" />
+        <item
+            android:id="@+id/watch_later"
+            android:title="@string/watch_later" />
+        <item
+            android:id="@+id/watched"
+
+            android:title="@string/watched" />
+        <item
+            android:id="@+id/dropped"
+            android:title="@string/dropped" />
+        <item
+            android:id="@+id/search_user"
+            android:title="@string/search_user" />
+
+
+        <!--Y
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -20,5 +39,6 @@
             android:id="@+id/youtubeFragment"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_youtube"/>
+        -->
     </group>
 </menu>
