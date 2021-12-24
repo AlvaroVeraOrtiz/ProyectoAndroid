@@ -19,6 +19,7 @@
     <string name="watch_later">Ver Más Tarde</string>
     <string name="watched">Vistos</string>
     <string name="dropped">Abandonados</string>
+    <string name="seguidos">Seguidos</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="introduzca_correo">Introduzca su correo electrónico.</string>
     <string name="introduzca_contraseña">Introduzca su contraseña</string>
