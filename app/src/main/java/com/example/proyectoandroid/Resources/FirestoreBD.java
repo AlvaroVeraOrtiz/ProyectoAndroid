@@ -26,7 +26,8 @@ public class FirestoreBD {
         List<String> res = new ArrayList<>();
 
         //Buscamos los usuarios seguidos y devolvemos sus ids.
-        db.collection("cities")
+
+        db.collection("usuarios")
                 .document("idUsuario")
                 .collection("seguidos")
                 .get()
@@ -38,7 +39,7 @@ public class FirestoreBD {
                                 res.add(document.getId());
                             }
                         } else {
-
+                            res.add("Error");
                         }
                     }
                 });
