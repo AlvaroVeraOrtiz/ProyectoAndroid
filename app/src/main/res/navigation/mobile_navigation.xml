@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.proyectoandroid.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:name="com.example.proyectoandroid.ui.mastarde.MasTardeFragment"
+        android:label="@string/menu_mas_tarde"
+        tools:layout="@layout/fragment_mas_tarde" />
 
     <fragment
         android:id="@+id/nav_slideshow"
