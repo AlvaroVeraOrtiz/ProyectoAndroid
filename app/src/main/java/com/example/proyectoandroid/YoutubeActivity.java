@@ -3,10 +3,15 @@ package com.example.proyectoandroid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectoandroid.Resources.YoutubeAPI;
+import com.example.proyectoandroid.ui.youtube.ResultAdapter;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -15,47 +20,26 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
+import com.google.api.services.youtube.model.SearchResult;
 
 public class YoutubeActivity extends YouTubeBaseActivity {
-
-    private TextView tvLink;
+    private ListView lvVideos;
+    private EditText tvSearch;
+    private List<SearchResult> videos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube);
 
         // Get reference to the view of Video player
-        YouTubePlayerView ytPlayer = (YouTubePlayerView)findViewById(R.id.ytPlayer);
-        final String[] video = {""};
-        Thread thread;
-        thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    video[0] = YoutubeAPI.buscaVideos(getIntent().getExtras().getString("video"));
-                } catch (GeneralSecurityException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        //YouTubePlayerView ytPlayer = (YouTubePlayerView)findViewById(R.id.ytPlayer);
 
 
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        tvLink= findViewById(R.id.tvLink);
-        tvLink.setText(video[0]);
-        ytPlayer.initialize(
+        lvVideos = findViewById(R.id.lvVideos);
+        tvSearch = findViewById(R.id.tvSearch);
+
+        /*ytPlayer.initialize(
                 YoutubeAPI.getAPI(),
                 new YouTubePlayer.OnInitializedListener() {
                     // Implement two methods by clicking on red
@@ -83,7 +67,46 @@ public class YoutubeActivity extends YouTubeBaseActivity {
                     {
                         Toast.makeText(getApplicationContext(), "Video player Failed", Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
 
+    }
+
+    public void iniciarBusqueda(View view) {
+
+        Buscador buscador = new Buscador(tvSearch.getText().toString());
+
+        buscador.start();
+        try {
+            buscador.join();
+            videos = buscador.getVideos();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ResultAdapter adaptador = new ResultAdapter(this,videos);
+        lvVideos.setAdapter(adaptador);
+    }
+
+    private class Buscador extends Thread {
+
+        private String busqueda;
+        private List<SearchResult> videos = null;
+
+        public Buscador (String busqueda) {
+            this.busqueda = busqueda;
+        }
+        @Override
+        public void run(){
+            try {
+                videos = YoutubeAPI.buscaVideos(busqueda);
+            } catch (GeneralSecurityException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public List<SearchResult> getVideos() {
+            return videos;
+        }
     }
 }

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/alvar/AndroidStudioProjects/ProyectoAndroid/app/src/main/res/layout/content_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/drawable/ic_menu_camera.xml" value="0.346875" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/activity_youtube.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/app_bar_main.xml" value="0.490036231884058" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.490036231884058" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/fragment_slideshow.xml" value="0.490036231884058" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/fragment_youtube.xml" value="0.46170212765957447" />
+        <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/list_view_item.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/nav_header_main.xml" value="0.490036231884058" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/layout/youtube_fragment.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/fsede/Desktop/UMA/SSEDP/Android/ProyectoAndroid/app/src/main/res/menu/activity_main_drawer.xml" value="0.5541666666666667" />
@@ -33,5 +35,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3307291666666667" />
+      </ProjectState>
+    </option>
   </component>
 </project>

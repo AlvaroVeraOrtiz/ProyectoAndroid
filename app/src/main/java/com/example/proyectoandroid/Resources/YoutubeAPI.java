@@ -16,9 +16,11 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
 
 public class YoutubeAPI {
     private static final String APPLICATION_NAME = "ProyectoAndroid";
@@ -51,13 +53,17 @@ public class YoutubeAPI {
     public static String getAPI () {
         return API;
     }
-    public static String buscaVideos(String titulo) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
+    public static List<SearchResult> buscaVideos(String titulo) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
         YouTube.Search.List request = youtubeService.search()
                 .list("snippet").setKey(API);
-        SearchListResponse response = request.setQ(titulo).execute();
-        return response.getItems().get(0).getId().getVideoId();
+        SearchListResponse response = request.setQ(titulo).setType("video").setMaxResults(10L).execute();
+        return response.getItems();
+    }
+
+    public static String obtenerTitulo(String id) {
+        return null;
     }
     /*public static void main(String[] args)
             throws GeneralSecurityException, IOException, GoogleJsonResponseException {

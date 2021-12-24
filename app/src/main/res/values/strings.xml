@@ -10,6 +10,7 @@
     <string name="inicio">Inicio</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_home">Home</string>
+    <string name="search_placeholder">Buscar Vídeos...</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_youtube">YouTube</string>
     <string name="btn_search">Buscar</string>

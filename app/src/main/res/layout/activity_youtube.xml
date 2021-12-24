@@ -6,23 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".YoutubeActivity">
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/ytPlayer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvLink"
-        android:layout_width="115dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="175dp"
-        android:text="TextView"
+    <ListView
+        android:id="@+id/lvVideos"
+        android:layout_width="382dp"
+        android:layout_height="649dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ytPlayer"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.804">
+
+        <!--<com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/ytPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />-->
+    </ListView>
+
+    <EditText
+        android:id="@+id/tvSearch"
+        android:layout_width="237dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/search_placeholder"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="97dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="iniciarBusqueda"
+        android:text="@string/btn_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.213"
+        app:layout_constraintStart_toEndOf="@+id/tvSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.015" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

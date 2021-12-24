@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "433465644654",
+    "project_id": "empotrados-b57c6",
+    "storage_bucket": "empotrados-b57c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433465644654:android:d80d85f4ddab546ad3b87f",
+        "android_client_info": {
+          "package_name": "com.example.proyectoandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433465644654-rr4ftm60tlca70o5g9qht3952s00geuh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM7ajli1T-cSszZc9KH92CQtQSwyfObm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433465644654-rr4ftm60tlca70o5g9qht3952s00geuh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

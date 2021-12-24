@@ -13,7 +13,8 @@
         android:theme="@style/Theme.ProyectoAndroid">
         <activity
             android:name=".YoutubeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
