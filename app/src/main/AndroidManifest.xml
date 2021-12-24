@@ -3,11 +3,13 @@
     package="com.example.proyectoandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <queries>
         <intent>
-            <action android:name="com.google.android.youtube.api.service.START"/>
+            <action android:name="com.google.android.youtube.api.service.START" />
         </intent>
     </queries>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,9 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoAndroid">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".YoutubeActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
