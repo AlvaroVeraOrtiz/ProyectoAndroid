@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_mastarde"
         android:name="com.example.proyectoandroid.ui.mastarde.MasTardeFragment"
         android:label="@string/menu_mas_tarde"
         tools:layout="@layout/fragment_mas_tarde" />
@@ -27,4 +27,9 @@
         android:name="com.example.proyectoandroid.ui.youtube.YoutubeFragment"
         android:label="fragment_youtube"
         tools:layout="@layout/fragment_youtube" />
+    <fragment
+        android:id="@+id/nav_seguidos"
+        android:name="com.example.proyectoandroid.ui.seguidos.SeguidosFragment"
+        android:label="@string/seguidos"
+        tools:layout="@layout/fragment_seguidos"/>
 </navigation>

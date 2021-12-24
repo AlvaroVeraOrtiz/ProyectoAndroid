@@ -14,7 +14,7 @@ import java.util.List;
 public class FirestoreBD {
     private final FirebaseFirestore db;
 
-    FirestoreBD(){
+    public FirestoreBD(){
         this.db = FirebaseFirestore.getInstance();
     }
 

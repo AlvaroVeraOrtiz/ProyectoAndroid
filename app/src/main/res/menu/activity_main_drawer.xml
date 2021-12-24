@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_mastarde"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_mas_tarde" />
         <item
@@ -20,5 +20,10 @@
             android:id="@+id/youtubeFragment"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_youtube"/>
+        <item
+            android:id="@+id/nav_seguidos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/seguidos"/>
+
     </group>
 </menu>
