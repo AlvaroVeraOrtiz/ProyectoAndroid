@@ -2,6 +2,7 @@ package com.example.proyectoandroid.ui.seguidos;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,7 +14,12 @@ import android.widget.ListView;
 import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.FirestoreBD;
 import com.example.proyectoandroid.Resources.YoutubeAPI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -32,10 +38,11 @@ public class SeguidosFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private FirestoreBD db = new FirestoreBD();
+    private FirebaseFirestore db;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private List<String> usuariosSeguidos;// = (ArrayList<String>) db.idsSiguiendo("VBZqjliJ98a0pXoGRsjY");
+    ArrayAdapter<String> listViewAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -71,48 +78,43 @@ public class SeguidosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_seguidos, container, false);
-        Buscador buscador = new Buscador("VBZqjliJ98a0pXoGRsjY");
-        buscador.start();
-        try {
-            buscador.join();
-            usuariosSeguidos = buscador.getSeguidos();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Object[] objectArray = usuariosSeguidos.toArray(); //{"Junko", "Morgana"};
-        String[] seguidosItems = Arrays.copyOf(objectArray, objectArray.length, String[].class); //{"Junko", "Morgana"};
 
+
+        ArrayList<String> seguidosItems = new ArrayList<>();
         ListView seguidosView = (ListView) view.findViewById(R.id.seguidosListView);
 
-        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
+        listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 seguidosItems
         );
-
         seguidosView.setAdapter(listViewAdapter);
+        idsSiguiendo("a");
         return view;
     }
 
-    private class Buscador extends Thread {
+    public void idsSiguiendo(String idUsuario){
+        /**
+         *  Función que toma el id del usuario y devuelve los ids de los que sigue.
+         */
 
-        private String busqueda;
-        private List<String> seguidos = null;
+        //Buscamos los usuarios seguidos y devolvemos sus ids.
+        db = FirebaseFirestore.getInstance();
+        db.collection("usuarios")
+                .document("VBZqjliJ98a0pXoGRsjY")
+                .collection("seguidos")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                listViewAdapter.add(document.getId());
+                            }
+                        } else {
 
-        public Buscador (String busqueda) {
-            this.busqueda = busqueda;
-        }
-        @Override
-        public void run(){
-            try {
-                seguidos = (ArrayList<String>) db.idsSiguiendo(busqueda);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        public List<String> getSeguidos() {
-            return seguidos;
-        }
+                        }
+                    }
+                });
     }
 }

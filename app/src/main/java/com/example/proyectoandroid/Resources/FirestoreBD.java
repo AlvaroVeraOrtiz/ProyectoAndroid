@@ -1,4 +1,6 @@
 package com.example.proyectoandroid.Resources;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import javax.annotation.Nullable;
 
@@ -19,16 +21,15 @@ public class FirestoreBD {
     }
 
 
-    public List<String> idsSiguiendo(String idUsuario){
+    public void idsSiguiendo(String idUsuario, List<String> res){
         /**
          *  Función que toma el id del usuario y devuelve los ids de los que sigue.
          */
-        List<String> res = new ArrayList<>();
 
         //Buscamos los usuarios seguidos y devolvemos sus ids.
 
         db.collection("usuarios")
-                .document("idUsuario")
+                .document("VBZqjliJ98a0pXoGRsjY")
                 .collection("seguidos")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -43,8 +44,6 @@ public class FirestoreBD {
                         }
                     }
                 });
-        
-        return res;
     }
     public EventListener<QuerySnapshot> listenToMensajes(String url, String idUsuario, List<Mensajes> mensajes) {
         /**
@@ -53,7 +52,7 @@ public class FirestoreBD {
          */
 
         //Obtenemos usuarios seguidos por el usuario
-        List<String> seguidos = idsSiguiendo(idUsuario);
+        List<String> seguidos = new ArrayList<>();
 
         //Creamos un Listener que se encargará de añadir los mensajes nuevos.
         EventListener<QuerySnapshot> listener = new EventListener<QuerySnapshot>() {
