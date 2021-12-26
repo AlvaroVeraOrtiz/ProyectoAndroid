@@ -32,9 +32,9 @@
         android:name="com.example.proyectoandroid.ui.seguidos.SeguidosFragment"
         android:label="@string/following"
         tools:layout="@layout/fragment_seguidos"/>
-    <fragment
+    <activity
         android:id="@+id/nav_login"
-        android:name="com.example.proyectoandroid.ui.login.LoginFragment"
+        android:name="com.example.proyectoandroid.LoginActivity"
         android:label="@string/iniciar_sesion"
         tools:layout="@layout/fragment_seguidos"/>
 </navigation>

@@ -101,7 +101,7 @@ public class LoginFragment extends Fragment {
                     Log.d("ID_Usuario",authResult.getUser().getUid());
                     //TODO Pasar a la pestaña de inicio una vez entrado
 
-
+                    //Si fuera otra actividad:
                     ///startActivity(new Intent(LoginFragment.this.getContext(), MainActivity.class));
                     ///LoginFragment.this.getActivity().finish();
                 }
