@@ -22,5 +22,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="introduzca_correo">Introduzca su correo electrónico.</string>
     <string name="introduzca_contraseña">Introduzca su contraseña</string>
+    <string name="datos_no_introducidos">No ha introducido correo o contraseña</string>
     <string name="crear_cuenta">Crear cuenta</string>
+    <string name="contreseña_no_valida">La contraseña debe tener al menos 6 carácteres.</string>
+    <string name="inicio_sesion_exitoso">Se ha iniciado sesión con éxito.</string>
+    <string name="introduzca_nombre">Introduzca su nombre</string>
+    <string name="registro_usuario">Registrarse</string>
 </resources>
