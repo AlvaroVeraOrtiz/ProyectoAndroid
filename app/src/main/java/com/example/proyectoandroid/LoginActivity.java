@@ -11,10 +11,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectoandroid.Resources.SingletonMap;
+import com.example.proyectoandroid.Resources.Usuario;
 import com.example.proyectoandroid.ui.login.LoginFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText correo, password;
@@ -41,8 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     Toast.makeText(LoginActivity.this,getString(R.string.inicio_sesion_exitoso), Toast.LENGTH_LONG).show();
                     Log.d("ID_Usuario",authResult.getUser().getUid());
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                    finish();
+                    sacarUsuarioPorId(authResult.getUser().getUid());
                 }
 
 
@@ -50,7 +54,28 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void iniciarUsuario(){
+    public void sacarUsuarioPorId(String uid){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("usuarios").document(uid);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Usuario user = documentSnapshot.toObject(Usuario.class);
+
+                if(user!=null){
+                    Toast.makeText(LoginActivity.this,getString(R.string.recuperando_datos), Toast.LENGTH_LONG).show();
+
+                    user.setUid(uid);
+                    SingletonMap sm = SingletonMap.getInstance();
+                    sm.put("usuario",user);
+
+                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    finish();
+                }else{
+                    Toast.makeText(LoginActivity.this,getString(R.string.recuperacion_fallida), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 
