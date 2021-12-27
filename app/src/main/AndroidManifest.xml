@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.proyectoandroid">
+    package="com.example.proyectoandroid" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,7 +16,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ProyectoAndroid">
+        android:theme="@style/Theme.ProyectoAndroid" >
+        <activity
+            android:name=".PlayerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_player"
+            android:theme="@style/Theme.ProyectoAndroid.NoActionBar" />
+        <activity
+            android:name=".ui.youtube.VideoSearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.youtube.VideoInfoActivity"
+            android:exported="false" />
         <activity
             android:name=".MessagesActivity"
             android:exported="false" />
@@ -27,14 +39,10 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".YoutubeActivity"
-            android:exported="false"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ProyectoAndroid.NoActionBar">
+            android:theme="@style/Theme.ProyectoAndroid.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
