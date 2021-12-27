@@ -6,7 +6,6 @@ package com.example.proyectoandroid.Resources;
  * https://developers.google.com/explorer-help/guides/code_samples#java
  */
 
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -15,6 +14,8 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.Channel;
+import com.google.api.services.youtube.model.ChannelListResponse;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
 
@@ -62,9 +63,19 @@ public class YoutubeAPI {
         return response.getItems();
     }
 
-    public static String obtenerTitulo(String id) {
+    public static SearchResult getVideo(String id) {
         return null;
     }
+
+    public static Channel getCanal(String id) throws IOException, GeneralSecurityException {
+        YouTube youtubeService = getService();
+        // Define and execute the API request
+        YouTube.Channels.List request = youtubeService.channels()
+                .list("snippet").setKey(API);
+        ChannelListResponse response = request.setId(id).setMaxResults(1L).execute();
+        return response.getItems().get(0);
+    }
+
     /*public static void main(String[] args)
             throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();

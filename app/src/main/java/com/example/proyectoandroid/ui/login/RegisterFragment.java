@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.proyectoandroid.R;
+import com.example.proyectoandroid.databinding.FragmentRegisterBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -51,7 +52,6 @@ public class RegisterFragment extends Fragment {
         correo = view.findViewById(R.id.correoDeRegistro);
         nombre = view.findViewById(R.id.nombreDeRegistro);
         password = view.findViewById(R.id.passwordDeRegistro);
-
         return view;
 
     }
