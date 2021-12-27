@@ -28,4 +28,11 @@
     <string name="inicio_sesion_exitoso">Se ha iniciado sesión con éxito.</string>
     <string name="introduzca_nombre">Introduzca su nombre</string>
     <string name="registro_usuario">Registrarse</string>
+    <string name="registro_exitoso">Se ha creado el usuario con éxito.</string>
+    <string name="registro_fallido">No se ha podido crear el usuario.</string>
+    <string name="nombre_requerido">El nombre es un parámetro obligatorio.</string>
+    <string name="guardando_datos">Guardando datos...</string>
+    <string name="guardado_fallido">Error guardando usuario.</string>
+    <string name="recuperando_datos">Recuperando datos...</string>
+    <string name="recuperacion_fallida">No se han podido recuperar los datos.</string>
 </resources>
