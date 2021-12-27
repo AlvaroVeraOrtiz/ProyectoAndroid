@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 public class Mensajes {
     private String creador;
     private String nombreCreador;
-    private String momento;
+    private Long momento;
     private String video;
 
     public String getCreador() {
@@ -18,7 +18,7 @@ public class Mensajes {
         return nombreCreador;
     }
 
-    public String getMomento() {
+    public Long getMomento() {
         return momento;
     }
 
@@ -26,11 +26,27 @@ public class Mensajes {
         return video;
     }
 
-    public Mensajes(String creador, String nombreCreador, Timestamp momento, String video) {
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
+
+    public void setNombreCreador(String nombreCreador) {
+        this.nombreCreador = nombreCreador;
+    }
+
+    public void setMomento(Long momento) {
+        this.momento = momento;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public Mensajes(String creador, String nombreCreador, Long momento, String video) {
         this.creador = creador;
         this.nombreCreador = nombreCreador;
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-        this.momento = formatter.format(momento.toDate());
+        this.momento = momento;
         this.video = video;
     }
 }

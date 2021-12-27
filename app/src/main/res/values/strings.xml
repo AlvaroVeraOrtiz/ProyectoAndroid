@@ -35,4 +35,6 @@
     <string name="guardado_fallido">Error guardando usuario.</string>
     <string name="recuperando_datos">Recuperando datos...</string>
     <string name="recuperacion_fallida">No se han podido recuperar los datos.</string>
+    <string name="pedir_mensaje">Introduzca su mensaje</string>
+    <string name="enviar">Enviar</string>
 </resources>

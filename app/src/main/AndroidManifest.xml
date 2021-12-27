@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoAndroid">
         <activity
+            android:name=".MessagesActivity"
+            android:exported="false" />
+        <activity
             android:name=".SiginActivity"
             android:exported="false" />
         <activity
