@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.Mensajes;
@@ -38,12 +39,14 @@ public class MessagesFragment extends Fragment {
     private String url;
     private Usuario usuario;
     private List<Mensajes> mensajes;
+    private ListView lista;
 
     public MessagesFragment() {
         // Required empty public constructor
         SingletonMap sm = SingletonMap.getInstance();
         usuario = (Usuario) sm.get("usuario");
         mensajes = new ArrayList<>();
+
     }
 
     /**
@@ -51,11 +54,10 @@ public class MessagesFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment MessagesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MessagesFragment newInstance(String param1, String param2) {
+    public static MessagesFragment newInstance(String param1) {
         MessagesFragment fragment = new MessagesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -75,9 +77,11 @@ public class MessagesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        lista = this.getView().findViewById(R.id.listaDeMensajes);
+        idsSiguiendo();
         return inflater.inflate(R.layout.fragment_messages, container, false);
     }
-    public void idsSiguiendo(String idUsuario){
+    public void idsSiguiendo(){
         /**
          *  Función que toma el id del usuario y devuelve los ids de los que sigue.
          */

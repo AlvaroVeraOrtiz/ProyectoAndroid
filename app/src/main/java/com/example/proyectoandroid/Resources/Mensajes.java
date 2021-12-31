@@ -1,11 +1,14 @@
 package com.example.proyectoandroid.Resources;
 
+import android.os.Message;
+
 import com.google.firebase.Timestamp;
 
 import java.text.SimpleDateFormat;
 
 public class Mensajes {
     private String creador;
+    private String contenido;
     private String nombreCreador;
     private Long momento;
     private String video;
@@ -42,11 +45,22 @@ public class Mensajes {
         this.video = video;
     }
 
-    public Mensajes(String creador, String nombreCreador, Long momento, String video) {
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public Mensajes(String creador, String contenido, String nombreCreador, Long momento, String video){
         this.creador = creador;
         this.nombreCreador = nombreCreador;
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         this.momento = momento;
         this.video = video;
+        this.contenido = contenido;
+    }
+
+    public Mensajes() {
     }
 }
