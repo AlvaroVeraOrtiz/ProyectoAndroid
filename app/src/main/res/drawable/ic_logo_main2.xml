@@ -4,7 +4,7 @@
     android:height="400dp"
     android:viewportWidth="512"
     android:viewportHeight="512">
-  <group android:translateY="33" android:translateX="5">
+  <group android:translateY="28" android:translateX="5">
   <path
       android:pathData="M256,223.009m-165.027,0a165.027,165.027 0,1 0,330.053 0a165.027,165.027 135,1 0,-330.053 0"
       android:fillColor="#758282"/>
