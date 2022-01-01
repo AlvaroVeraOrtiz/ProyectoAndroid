@@ -85,7 +85,7 @@ public class YoutubeAPI {
         List<SearchResult> res = null;
         //Iteramos múltiples veces
 
-        for(int i = 0; i <= ids.size()/5;i++) {
+        for(int i = 0; i <= ids.size()/10;i++) {
             String q = "";
             int cont = 0;
             if (it.hasNext()) {
@@ -93,7 +93,7 @@ public class YoutubeAPI {
                 q += it.next();
             }
 
-            while(it.hasNext() && cont < 5) {
+            while(it.hasNext() && cont < 10) {
                 cont++;
                 q+="|" + it.next();
             }
@@ -103,7 +103,7 @@ public class YoutubeAPI {
                     .list("snippet");
             //Buscamos los elementos contados
             SearchListResponse response = request.setKey(API)
-                    .setMaxResults( (cont>=5) ? 5L : (long) cont )
+                    .setMaxResults( (cont>=10) ? 10L : (long) cont )
                     .setQ(q)
                     .setType("video")
                     .execute();
