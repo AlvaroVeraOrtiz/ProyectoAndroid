@@ -83,19 +83,12 @@ public class YoutubeAPI {
 
         Iterator<String> it = ids.iterator();
         List<SearchResult> res = null;
-        //El tamaño máximo de los resultados es 50, iteramos múltiples veces
-        for (int i = 0; i <= ids.size()/50; i++) {
+        //Iteramos múltiples veces
+        for (int i = 0; i <= ids.size(); i++) {
             //inicializamos la q y el contador de los elementos
             String q = "";
-            int cont  = 0;
             if (it.hasNext()) {
-                cont++;
                 q += it.next();
-            }
-            //Contamos cuantos elementos hay en la iteración
-            while (it.hasNext() && cont < 50) {
-                cont++;
-                q+= "|" + it.next();
             }
             YouTube youtubeService = getService();
             // Define and execute the API request
@@ -103,7 +96,7 @@ public class YoutubeAPI {
                     .list("snippet");
             //Buscamos los elementos contados
             SearchListResponse response = request.setKey(API)
-                    .setMaxResults( (cont>=50) ? 50L : (long) cont)
+                    .setMaxResults( 1L )
                     .setQ(q)
                     .setType("video")
                     .execute();
