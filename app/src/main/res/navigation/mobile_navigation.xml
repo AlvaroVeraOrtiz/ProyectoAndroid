@@ -43,5 +43,10 @@
         android:name="com.example.proyectoandroid.ui.youtube.ListaActivity"
         android:label="activity_lista"
         tools:layout="@layout/activity_lista" />
+    <activity
+        android:id="@+id/watchLaterActivity"
+        android:name="com.example.proyectoandroid.ui.watchlater.WatchLaterActivity"
+        android:label="activity_watch_later"
+        tools:layout="@layout/activity_watch_later" />
 
 </navigation>
