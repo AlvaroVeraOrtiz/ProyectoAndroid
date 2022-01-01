@@ -28,7 +28,7 @@ import java.util.List;
 public class YoutubeAPI {
     private static final String APPLICATION_NAME = "ProyectoAndroid";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static String API = "AIzaSyCoEz_Uk6fPutUgIpi8YzY6QCiZidLJP74";
+    private static String API = "AIzaSyDEUQWH4aJOskd6-fcXMnQPSYqbBAGUH40";
     /**
      * Build and return an authorized API client service.
      *
@@ -84,11 +84,18 @@ public class YoutubeAPI {
         Iterator<String> it = ids.iterator();
         List<SearchResult> res = null;
         //Iteramos múltiples veces
-        for (int i = 0; i <= ids.size(); i++) {
-            //inicializamos la q y el contador de los elementos
+
+        for(int i = 0; i <= ids.size()/5;i++) {
             String q = "";
+            int cont = 0;
             if (it.hasNext()) {
+                cont++;
                 q += it.next();
+            }
+
+            while(it.hasNext() && cont < 5) {
+                cont++;
+                q+="|" + it.next();
             }
             YouTube youtubeService = getService();
             // Define and execute the API request
@@ -96,14 +103,13 @@ public class YoutubeAPI {
                     .list("snippet");
             //Buscamos los elementos contados
             SearchListResponse response = request.setKey(API)
-                    .setMaxResults( 1L )
+                    .setMaxResults( (cont>=5) ? 5L : (long) cont )
                     .setQ(q)
                     .setType("video")
                     .execute();
-            //Si es la primera iteración no hay lista creada, la creamos
-            if (i==0) {
+            if (res==null) {
                 res = response.getItems();
-            //Si es otra iteración añadimos todos los elementos al resultado
+                //Si es otra iteración añadimos todos los elementos al resultado
             } else {
                 res.addAll(response.getItems());
             }
