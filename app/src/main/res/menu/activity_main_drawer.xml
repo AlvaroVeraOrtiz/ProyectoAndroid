@@ -9,10 +9,6 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_mastarde"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/watch_later" />
-        <item
             android:id="@+id/watchLaterActivity"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/watch_later" />

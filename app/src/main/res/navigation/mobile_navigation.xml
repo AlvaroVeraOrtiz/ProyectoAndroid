@@ -12,12 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_mastarde"
-        android:name="com.example.proyectoandroid.ui.mastarde.MasTardeFragment"
-        android:label="@string/watch_later"
-        tools:layout="@layout/fragment_mas_tarde" />
-
-    <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.proyectoandroid.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
