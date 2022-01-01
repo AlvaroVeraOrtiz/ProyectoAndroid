@@ -21,6 +21,8 @@ import com.google.api.services.youtube.model.SearchResult;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class YoutubeAPI {
@@ -59,7 +61,7 @@ public class YoutubeAPI {
         // Define and execute the API request
         YouTube.Search.List request = youtubeService.search()
                 .list("snippet").setKey(API);
-        SearchListResponse response = request.setQ(titulo).setType("video").setMaxResults(10L).execute();
+        SearchListResponse response = request.setQ(titulo).setType("video").setMaxResults(20L).execute();
         return response.getItems();
     }
 
@@ -74,6 +76,46 @@ public class YoutubeAPI {
                 .list("snippet").setKey(API);
         ChannelListResponse response = request.setId(id).setMaxResults(1L).execute();
         return response.getItems().get(0);
+    }
+
+    public static List<SearchResult> getListaVideos(List<String> ids) throws GeneralSecurityException, IOException {
+
+
+        Iterator<String> it = ids.iterator();
+        List<SearchResult> res = null;
+        //El tamaño máximo de los resultados es 50, iteramos múltiples veces
+        for (int i = 0; i <= ids.size()/50; i++) {
+            //inicializamos la q y el contador de los elementos
+            String q = "";
+            int cont  = 0;
+            if (it.hasNext()) {
+                cont++;
+                q += it.next();
+            }
+            //Contamos cuantos elementos hay en la iteración
+            while (it.hasNext() && cont < 50) {
+                cont++;
+                q+= "|" + it.next();
+            }
+            YouTube youtubeService = getService();
+            // Define and execute the API request
+            YouTube.Search.List request = youtubeService.search()
+                    .list("snippet");
+            //Buscamos los elementos contados
+            SearchListResponse response = request.setKey(API)
+                    .setMaxResults( (cont>=50) ? 50L : (long) cont)
+                    .setQ(q)
+                    .setType("video")
+                    .execute();
+            //Si es la primera iteración no hay lista creada, la creamos
+            if (i==0) {
+                res = response.getItems();
+            //Si es otra iteración añadimos todos los elementos al resultado
+            } else {
+                res.addAll(response.getItems());
+            }
+        }
+        return res;
     }
 
     /*public static void main(String[] args)
