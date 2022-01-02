@@ -42,5 +42,10 @@
         android:name="com.example.proyectoandroid.ui.watchlater.WatchLaterActivity"
         android:label="activity_watch_later"
         tools:layout="@layout/activity_watch_later" />
+    <activity
+        android:id="@+id/searchUsersActivity"
+        android:name="com.example.proyectoandroid.ui.search_users.SearchUsersActivity"
+        android:label="activity_search_users"
+        tools:layout="@layout/activity_search_users" />
 
 </navigation>

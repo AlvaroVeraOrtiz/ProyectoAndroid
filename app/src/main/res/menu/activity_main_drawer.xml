@@ -25,6 +25,10 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/following"/>
         <item
+            android:id="@+id/searchUsersActivity"
+            android:icon="@drawable/ic_baseline_users"
+            android:title="@string/search_users"/>
+        <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/iniciar_sesion"/>
