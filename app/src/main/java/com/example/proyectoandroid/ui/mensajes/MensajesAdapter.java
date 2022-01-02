@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MensajesAdapter extends ArrayAdapter<Mensajes> {
-    LayoutInflater mInflater;
-    int mResource;
+    private LayoutInflater mInflater;
+    private int mResource;
     //private MensajeFilter filter;
     //private List<Mensajes> originales;
 

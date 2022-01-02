@@ -50,4 +50,7 @@
     <string name="enviar">Enviar</string>
     <string name="envio_exitoso">Enviado.</string>
     <string name="envio_fallido">No se ha enviado</string>
+    <string name="seguir">Seguir</string>
+    <string name="comentados">Comentados</string>
+    <string name="videos">videos</string>
 </resources>

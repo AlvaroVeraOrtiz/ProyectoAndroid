@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.FirestoreBD;
+import com.example.proyectoandroid.Resources.SingletonMap;
+import com.example.proyectoandroid.Resources.Usuario;
 import com.example.proyectoandroid.Resources.YoutubeAPI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,14 +41,8 @@ public class SeguidosFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private FirebaseFirestore db;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private List<String> usuariosSeguidos;// = (ArrayList<String>) db.idsSiguiendo("VBZqjliJ98a0pXoGRsjY");
-    ArrayAdapter<String> listViewAdapter;
+    UsuarioAdapter listViewAdapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public SeguidosFragment() {
         // Required empty public constructor
@@ -58,11 +54,9 @@ public class SeguidosFragment extends Fragment {
      * @return A new instance of fragment SeguidosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SeguidosFragment newInstance(String param1, String param2) {
+    public static SeguidosFragment newInstance() {
         SeguidosFragment fragment = new SeguidosFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -80,28 +74,30 @@ public class SeguidosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_seguidos, container, false);
 
 
-        ArrayList<String> seguidosItems = new ArrayList<>();
+        ArrayList<Usuario> seguidosItems = new ArrayList<>();
         ListView seguidosView = (ListView) view.findViewById(R.id.seguidosListView);
 
-        listViewAdapter = new ArrayAdapter<String>(
+        listViewAdapter = new UsuarioAdapter(
                 getActivity(),
-                android.R.layout.simple_list_item_1,
+                R.id.seguidosListView,
                 seguidosItems
         );
+
         seguidosView.setAdapter(listViewAdapter);
-        idsSiguiendo("a");
+        idsSiguiendo();
         return view;
     }
 
-    public void idsSiguiendo(String idUsuario){
+    public void idsSiguiendo(){
         /**
          *  Función que toma el id del usuario y devuelve los ids de los que sigue.
          */
-
+        SingletonMap sm = SingletonMap.getInstance();
+        Usuario u = (Usuario) sm.get("usuario");
         //Buscamos los usuarios seguidos y devolvemos sus ids.
         db = FirebaseFirestore.getInstance();
         db.collection("usuarios")
-                .document("VBZqjliJ98a0pXoGRsjY")
+                .document(u.getUid())
                 .collection("seguidos")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -109,10 +105,8 @@ public class SeguidosFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                listViewAdapter.add(document.getId());
+                                listViewAdapter.add(document.toObject(Usuario.class));
                             }
-                        } else {
-
                         }
                     }
                 });
