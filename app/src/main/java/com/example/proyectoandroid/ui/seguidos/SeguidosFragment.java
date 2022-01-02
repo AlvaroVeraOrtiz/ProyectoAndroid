@@ -41,7 +41,8 @@ public class SeguidosFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private FirebaseFirestore db;
-    UsuarioAdapter listViewAdapter;
+    private ListView seguidosView;
+    private UsuarioAdapter listViewAdapter;
 
 
     public SeguidosFragment() {
@@ -74,16 +75,9 @@ public class SeguidosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_seguidos, container, false);
 
 
-        ArrayList<Usuario> seguidosItems = new ArrayList<>();
-        ListView seguidosView = (ListView) view.findViewById(R.id.seguidosListView);
+        seguidosView = (ListView) view.findViewById(R.id.seguidosListView);
 
-        listViewAdapter = new UsuarioAdapter(
-                getActivity(),
-                R.id.seguidosListView,
-                seguidosItems
-        );
 
-        seguidosView.setAdapter(listViewAdapter);
         idsSiguiendo();
         return view;
     }
@@ -104,10 +98,22 @@ public class SeguidosFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            List<Usuario> seguidosItems = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                listViewAdapter.add(document.toObject(Usuario.class));
+                                Usuario u = document.toObject(Usuario.class);
+                                u.setUid(document.getId());
+                                seguidosItems.add(u);
                             }
+                            listViewAdapter = new UsuarioAdapter(
+                                    getActivity(),
+                                    R.id.seguidosListView,
+                                    seguidosItems,
+                                    seguidosItems
+                            );
+
+                            seguidosView.setAdapter(listViewAdapter);
                         }
+                        db.terminate();
                     }
                 });
     }
