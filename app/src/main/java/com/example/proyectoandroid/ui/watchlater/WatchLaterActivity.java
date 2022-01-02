@@ -3,14 +3,14 @@ package com.example.proyectoandroid.ui.watchlater;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 
 import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.YoutubeAPI;
-import com.example.proyectoandroid.ui.youtube.ListaActivity;
 import com.example.proyectoandroid.ui.youtube.ResultAdapter;
+import com.example.proyectoandroid.ui.youtube.VideoListAdapter;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Video;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class WatchLaterActivity extends AppCompatActivity {
     private ListView wlVideos;
-    private List<SearchResult> videos;
+    private List<Video> videos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,14 +51,14 @@ public class WatchLaterActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ResultAdapter adaptador = new ResultAdapter(this,videos);
+        VideoListAdapter adaptador = new VideoListAdapter(this,videos);
         wlVideos.setAdapter(adaptador);
     }
 
     private class Buscador extends Thread {
 
         private List<String> busqueda;
-        private List<SearchResult> videos = null;
+        private List<Video> videos = null;
 
         public Buscador (List<String> busqueda) {
             this.busqueda = busqueda;
@@ -74,7 +74,7 @@ public class WatchLaterActivity extends AppCompatActivity {
             }
         }
 
-        public List<SearchResult> getVideos() {
+        public List<Video> getVideos() {
             return videos;
         }
     }

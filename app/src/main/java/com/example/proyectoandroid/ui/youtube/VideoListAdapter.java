@@ -15,11 +15,11 @@ import com.google.api.services.youtube.model.Video;
 
 import java.util.List;
 
-public class ResultAdapter extends BaseAdapter {
-    private List<SearchResult> products;
+public class VideoListAdapter extends BaseAdapter {
+    private List<Video> products;
     private Context context;
 
-    public ResultAdapter (Context context, List<SearchResult> products) {
+    public VideoListAdapter(Context context, List<Video> products) {
         this.context = context;
         this.products = products;
     }
@@ -44,9 +44,9 @@ public class ResultAdapter extends BaseAdapter {
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = li.inflate(R.layout.list_view_item,null);
         ImageView image = view.findViewById(R.id.video_thumbnail);
-        SearchResult p = products.get(position);
-        Glide.with(context).load("https://img.youtube.com/vi/" + p.getId().getVideoId() + "/0.jpg").into(image);
-        TextView text = (TextView) view.findViewById(R.id.video_title);
+        Video p = products.get(position);
+        Glide.with(context).load("https://img.youtube.com/vi/" + p.getId() + "/0.jpg").into(image);
+        TextView text = view.findViewById(R.id.video_title);
         text.setText(p.getSnippet().getTitle());
 
         return view;

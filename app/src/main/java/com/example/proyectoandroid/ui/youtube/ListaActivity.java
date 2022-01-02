@@ -1,9 +1,7 @@
 package com.example.proyectoandroid.ui.youtube;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -11,6 +9,7 @@ import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.YoutubeAPI;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Video;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -20,7 +19,7 @@ import java.util.List;
 public class ListaActivity extends YouTubeBaseActivity {
     private ListView lvVideos;
     private EditText tvSearch;
-    private List<SearchResult> videos;
+    private List<Video> videos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,7 @@ public class ListaActivity extends YouTubeBaseActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ResultAdapter adaptador = new ResultAdapter(this,videos);
+        VideoListAdapter adaptador = new VideoListAdapter(this,videos);
         lvVideos.setAdapter(adaptador);
 
     }
@@ -58,7 +57,7 @@ public class ListaActivity extends YouTubeBaseActivity {
     private class Buscador extends Thread {
 
         private List<String> busqueda;
-        private List<SearchResult> videos = null;
+        private List<Video> videos = null;
 
         public Buscador (List<String> busqueda) {
             this.busqueda = busqueda;
@@ -74,7 +73,7 @@ public class ListaActivity extends YouTubeBaseActivity {
             }
         }
 
-        public List<SearchResult> getVideos() {
+        public List<Video> getVideos() {
             return videos;
         }
     }

@@ -18,11 +18,12 @@ import com.google.api.services.youtube.model.Channel;
 import com.google.api.services.youtube.model.ChannelListResponse;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Video;
+import com.google.api.services.youtube.model.VideoListResponse;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public class YoutubeAPI {
@@ -78,14 +79,14 @@ public class YoutubeAPI {
         return response.getItems().get(0);
     }
 
-    public static List<SearchResult> getListaVideos(List<String> ids) throws GeneralSecurityException, IOException {
+    public static List<Video> getListaVideos(List<String> ids) throws GeneralSecurityException, IOException {
 
 
         Iterator<String> it = ids.iterator();
-        List<SearchResult> res = null;
+        List<Video> res = null;
         //Iteramos múltiples veces
 
-        for(int i = 0; i <= ids.size()/10;i++) {
+        for(int i = 0; i <= ids.size()/50;i++) {
             String q = "";
             int cont = 0;
             if (it.hasNext()) {
@@ -93,19 +94,19 @@ public class YoutubeAPI {
                 q += it.next();
             }
 
-            while(it.hasNext() && cont < 10) {
+            while(it.hasNext() && cont < 50) {
                 cont++;
-                q+="|" + it.next();
+                q+="," + it.next();
             }
             YouTube youtubeService = getService();
-            // Define and execute the API request
-            YouTube.Search.List request = youtubeService.search()
-                    .list("snippet");
+
             //Buscamos los elementos contados
-            SearchListResponse response = request.setKey(API)
-                    .setMaxResults( (cont>=10) ? 10L : (long) cont )
-                    .setQ(q)
-                    .setType("video")
+            // Define and execute the API request
+            YouTube.Videos.List request = youtubeService.videos()
+                    .list("snippet");
+            VideoListResponse response = request.setKey(API)
+                    .setId(q)
+                    .setMaxResults((cont>=50) ? 50L : (long) cont)
                     .execute();
             if (res==null) {
                 res = response.getItems();
