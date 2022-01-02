@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoAndroid">
         <activity
+            android:name=".ui.search_users.SearchUsersActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.watchlater.WatchLaterActivity"
             android:exported="false" />
         <activity
