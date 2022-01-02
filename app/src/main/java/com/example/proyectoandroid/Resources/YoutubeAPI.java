@@ -66,8 +66,13 @@ public class YoutubeAPI {
         return response.getItems();
     }
 
-    public static SearchResult getVideo(String id) {
-        return null;
+    public static Video getVideo(String id) throws GeneralSecurityException, IOException {
+        YouTube youtubeService = getService();
+        // Define and execute the API request
+        YouTube.Videos.List request = youtubeService.videos()
+                .list("snippet").setKey(API);
+        VideoListResponse response = request.setId(id).setMaxResults(1L).execute();
+        return response.getItems().get(0);
     }
 
     public static Channel getCanal(String id) throws IOException, GeneralSecurityException {
