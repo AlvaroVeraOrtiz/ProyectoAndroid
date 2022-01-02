@@ -30,6 +30,7 @@ public class YoutubeAPI {
     private static final String APPLICATION_NAME = "ProyectoAndroid";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static String API = "AIzaSyDEUQWH4aJOskd6-fcXMnQPSYqbBAGUH40";
+    private static String busquedaAPI = "AIzaSyAZD6i5oRnAxj07hC0LdCBmNaBUoJbdARo";
     /**
      * Build and return an authorized API client service.
      *
@@ -57,11 +58,15 @@ public class YoutubeAPI {
     public static String getAPI () {
         return API;
     }
+
+    public static String getBusquedaAPI() {
+        return busquedaAPI;
+    }
     public static List<SearchResult> buscaVideos(String titulo) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
         YouTube.Search.List request = youtubeService.search()
-                .list("snippet").setKey(API);
+                .list("snippet").setKey(busquedaAPI);
         SearchListResponse response = request.setQ(titulo).setType("video").setMaxResults(20L).execute();
         return response.getItems();
     }
