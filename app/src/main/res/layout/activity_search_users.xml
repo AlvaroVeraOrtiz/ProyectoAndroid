@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.search_users.SearchUsersActivity">
 
-    <ListView
-        android:id="@+id/lvUsuarios"
-        android:layout_width="382dp"
-        android:layout_height="649dp"
-        android:layout_marginTop="34dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearch"/>
+
 
     <EditText
         android:id="@+id/tvSearch"
@@ -44,5 +35,15 @@
         app:layout_constraintStart_toEndOf="@+id/tvSearch"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.015" />
+
+    <ListView
+        android:id="@+id/lvUsuarios"
+        android:layout_width="382dp"
+        android:layout_height="649dp"
+        android:layout_marginTop="34dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
