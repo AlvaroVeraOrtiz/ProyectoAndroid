@@ -63,13 +63,13 @@ public class MensajesAdapter extends ArrayAdapter<Mensajes> {
         momento = momento/1000;
 
         long m = momento/3600;
-        res.add(m<10?"0":""+m);
+        res.add((m<10?"0":"")+m);
 
         m = (momento%3600)/60;
-        res.add(m<10?"0":""+m);
+        res.add((m<10?"0":"")+m);
 
         m = momento%60;
-        res.add(m<10?"0":""+m);
+        res.add((m<10?"0":"")+m);
 
         return res.toString();
     }
