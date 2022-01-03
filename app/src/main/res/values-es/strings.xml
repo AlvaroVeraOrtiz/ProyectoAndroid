@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">YouShare</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">YouShare</string>
+    <string name="nav_header_subtitle">Comparte y disfruta videos como en directo.</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Opciones</string>
+
+    <string name="inicio">Inicio</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="watch_later">Ver Más tarde</string>
+    <string name="search_users">Buscar Usuarios</string>
+    <string name="menu_home">Home</string>
+    <string name="search_placeholder">Buscar Vídeos...</string>
+    <string name="search_users_placeholder">Buscar Usuarios...</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_youtube">YouTube</string>
+    <string name="btn_search">Buscar</string>
+    <string name="list">Lista</string>
+    <string name="watched">Vistos</string>
+    <string name="dropped">Abandonados</string>
+    <string name="following">Seguidos</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="introduzca_correo">Introduzca su correo electrónico.</string>
+    <string name="introduzca_contraseña">Introduzca su contraseña</string>
+    <string name="datos_no_introducidos">No ha introducido correo o contraseña</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="contreseña_no_valida">La contraseña debe tener al menos 6 carácteres.</string>
+    <string name="inicio_sesion_exitoso">Se ha iniciado sesión con éxito.</string>
+    <string name="introduzca_nombre">Introduzca su nombre</string>
+    <string name="registro_usuario">Registrarse</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_player">PlayerActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="registro_exitoso">Se ha creado el usuario con éxito.</string>
+    <string name="registro_fallido">No se ha podido crear el usuario.</string>
+    <string name="nombre_requerido">El nombre es un parámetro obligatorio.</string>
+    <string name="guardando_datos">Guardando datos...</string>
+    <string name="guardado_fallido">Error guardando usuario.</string>
+    <string name="sincronizacion_fallida">Error conectando con la base de datos.</string>
+    <string name="recuperando_datos">Recuperando datos...</string>
+    <string name="recuperacion_fallida">No se han podido recuperar los datos.</string>
+    <string name="pedir_mensaje">Introduzca su mensaje</string>
+    <string name="enviar">Enviar</string>
+    <string name="envio_exitoso">Enviado.</string>
+    <string name="envio_fallido">No se ha enviado</string>
+    <string name="seguir">Seguir</string>
+    <string name="comentados">Comentados</string>
+    <string name="videos">videos</string>
+    <string name="addVerMasTarde">Añadir a ver más tarde</string>
+    <string name="deleteVerMasTarde">Eliminar de Ver Más Tarde</string>
+</resources>
