@@ -1,8 +1,10 @@
 package com.example.proyectoandroid.ui.seguidos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Icon;
+import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -23,6 +25,8 @@ import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.Mensajes;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
+import com.example.proyectoandroid.ui.watchlater.ComentadosActivity;
+import com.example.proyectoandroid.ui.watchlater.WatchLaterActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -60,6 +64,24 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
         t.setSpan(new StyleSpan(Typeface.BOLD), 0, len , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         t.setSpan(new ForegroundColorSpan(color(u.getUid())),0,len,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         text.setText(t);
+        ImageButton b = (ImageButton) view.findViewById(R.id.videos_comentarios);
+
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Cambiar tipo de activity
+                Intent intento = new Intent(getContext(), ComentadosActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("idUsuario",u.getUid());
+                intento.putExtras(bundle);
+                getContext().startActivity(intento);
+
+            }
+        });
+
+
+
 
         ImageButton ib = (ImageButton) view.findViewById(R.id.seguir_button);
 

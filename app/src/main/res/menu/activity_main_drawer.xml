@@ -6,31 +6,33 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/watchLaterActivity"
-            android:icon="@drawable/ic_baseline_video_library_24"
+            android:icon="@drawable/ic_baseline_watch_later_24"
             android:title="@string/watch_later" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/comentadosActivity"
+            android:icon="@drawable/ic_baseline_video_library_24"
+            android:title="@string/comentados" />
+
         <item
             android:id="@+id/videoSearchActivity"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_youtube_social_white_squircle"
             android:title="@string/menu_youtube"/>
         <item
             android:id="@+id/nav_seguidos"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_users"
             android:title="@string/following"/>
         <item
             android:id="@+id/searchUsersActivity"
-            android:icon="@drawable/ic_baseline_users"
+            android:icon="@drawable/ic_baseline_person_search_24"
             android:title="@string/search_users"/>
         <item
             android:id="@+id/nav_login"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_logout_24"
             android:title="@string/iniciar_sesion"/>
     </group>
 </menu>

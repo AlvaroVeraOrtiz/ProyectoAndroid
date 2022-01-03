@@ -23,6 +23,7 @@ import com.example.proyectoandroid.Resources.Mensajes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class MensajesAdapter extends ArrayAdapter<Mensajes> {
     private LayoutInflater mInflater;
@@ -44,14 +45,33 @@ public class MensajesAdapter extends ArrayAdapter<Mensajes> {
 
         TextView text = (TextView) view.findViewById(R.id.mensaje_item);
         Mensajes m = this.getItem(position);
-        SpannableString t = new SpannableString(m.getNombreCreador()+": "+ m.getContenido());
+        String mom = " "+momento(m.getMomento());
+        SpannableString t = new SpannableString(m.getNombreCreador()+mom+": "+ m.getContenido());
 
         int len = m.getNombreCreador().length();
-        t.setSpan(new StyleSpan(Typeface.BOLD), 0, len , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        int len2 = mom.length();
+        t.setSpan(new StyleSpan(Typeface.BOLD), 0, len + len2 , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         t.setSpan(new ForegroundColorSpan(color(m.getCreador())),0,len,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        t.setSpan(new ForegroundColorSpan(Color.GRAY), len, len + len2 , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         text.setText(t);
 
         return view;
+    }
+
+    private String momento(long momento){
+        StringJoiner res= new StringJoiner(":","(",")");
+        momento = momento/1000;
+
+        long m = momento/3600;
+        res.add(m<10?"0":""+m);
+
+        m = (momento%3600)/60;
+        res.add(m<10?"0":""+m);
+
+        m = momento%60;
+        res.add(m<10?"0":""+m);
+
+        return res.toString();
     }
 
     private int color(String s){
