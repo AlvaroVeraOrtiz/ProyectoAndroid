@@ -1,9 +1,12 @@
 package com.example.proyectoandroid.Resources;
 
+import java.util.List;
+
 public class Usuario {
     private String uid="";
     private String email="";
     private String nombre="";
+    private List<String> verMasTarde;
 
     public Usuario(){
 
@@ -42,4 +45,8 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public List<String> getVerMasTarde(){return verMasTarde;}
+
+    public void setVerMasTarde(List<String> verMasTarde){this.verMasTarde = verMasTarde;}
 }

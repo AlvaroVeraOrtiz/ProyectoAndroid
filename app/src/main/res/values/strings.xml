@@ -46,6 +46,7 @@
     <string name="nombre_requerido">El nombre es un parámetro obligatorio.</string>
     <string name="guardando_datos">Guardando datos...</string>
     <string name="guardado_fallido">Error guardando usuario.</string>
+    <string name="sincronizacion_fallida">Error conectando con la base de datos.</string>
     <string name="recuperando_datos">Recuperando datos...</string>
     <string name="recuperacion_fallida">No se han podido recuperar los datos.</string>
     <string name="pedir_mensaje">Introduzca su mensaje</string>
@@ -55,4 +56,6 @@
     <string name="seguir">Seguir</string>
     <string name="comentados">Comentados</string>
     <string name="videos">videos</string>
+    <string name="addVerMasTarde">Añadir a ver más tarde</string>
+    <string name="deleteVerMasTarde">Eliminar de Ver Más Tarde</string>
 </resources>

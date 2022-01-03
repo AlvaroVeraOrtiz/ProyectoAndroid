@@ -23,6 +23,9 @@
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable-v24/ic_nav_background.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable-v24/ic_navbar_logo.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_baseline_users.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_baseline_video_library_24.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_launcher_custom_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_logo.xml" value="0.2703125" />
@@ -40,6 +43,7 @@
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_player.xml" value="0.1" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_search_users.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_sigin.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_video_info.xml" value="0.264" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_video_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_watch_later.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_youtube.xml" value="0.17798913043478262" />
