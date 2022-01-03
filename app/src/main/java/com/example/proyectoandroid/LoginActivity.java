@@ -1,5 +1,6 @@
 package com.example.proyectoandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -14,9 +15,11 @@ import android.widget.Toast;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
 import com.example.proyectoandroid.ui.login.LoginFragment;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,16 +45,32 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this,getString(R.string.contreseña_no_valida), Toast.LENGTH_LONG).show();
         }else{
 
-            mauth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>(){
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    Toast.makeText(LoginActivity.this,getString(R.string.inicio_sesion_exitoso), Toast.LENGTH_LONG).show();
-                    Log.d("ID_Usuario",authResult.getUser().getUid());
-                    sacarUsuarioPorId(authResult.getUser().getUid());
-                }
+            mauth.signInWithEmailAndPassword(email,pass)
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>(){
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            Toast.makeText(LoginActivity.this,getString(R.string.inicio_sesion_exitoso), Toast.LENGTH_LONG).show();
+                            Log.d("ID_Usuario",authResult.getUser().getUid());
+                            sacarUsuarioPorId(authResult.getUser().getUid());
+                        }
 
-
-            } );
+                    } )
+                    .addOnFailureListener(new OnFailureListener(){
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            String error = getString(R.string.inicio_sesion_fallido);
+                            if(e instanceof FirebaseAuthException){
+                                FirebaseAuthException ex = (FirebaseAuthException) e;
+                                String code = ex.getErrorCode();
+                                if("ERROR_WRONG_PASSWORD".equals(code)){
+                                    error = getString(R.string.contraseña_incorrecta);
+                                }else if("ERROR_USER_NOT_FOUND".equals(code)){
+                                    error = getString(R.string.usuario_incorrecto);
+                                }
+                            }
+                            Toast.makeText(LoginActivity.this,error, Toast.LENGTH_LONG).show();
+                        }
+                    } );
         }
     }
 

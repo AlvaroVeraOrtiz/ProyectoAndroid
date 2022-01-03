@@ -58,4 +58,7 @@
     <string name="videos">videos</string>
     <string name="addVerMasTarde">Añadir a ver más tarde</string>
     <string name="deleteVerMasTarde">Eliminar de Ver Más Tarde</string>
+    <string name="contraseña_incorrecta">Contraseña incorrecta</string>
+    <string name="usuario_incorrecto">Usuario incorrecto</string>
+    <string name="inicio_sesion_fallido">Ha ocurrido un error al iniciar sesión</string>
 </resources>
