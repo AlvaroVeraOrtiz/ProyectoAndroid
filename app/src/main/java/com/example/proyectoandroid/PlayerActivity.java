@@ -25,7 +25,12 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -42,6 +47,7 @@ public class PlayerActivity extends YouTubeBaseActivity {
     private Usuario usuario;
     private List<Mensajes> mensajes;
     private MensajesAdapter adapter;
+    ListenerRegistration registration;
     private ListView chat;
     private YouTubePlayer player = null;
     private String current = "";
@@ -154,28 +160,36 @@ public class PlayerActivity extends YouTubeBaseActivity {
 
     public void cargarMensajesBD(List<String> seguidos, String url){
 
+         registration = db.collection("mensajes")
+                                    .whereEqualTo("video",url)
+                                    .whereIn("creador",seguidos)
+                                    .orderBy("momento", Query.Direction.ASCENDING)
+                                    .addSnapshotListener(
+                                            new EventListener<QuerySnapshot>() {
 
-        db.collection("mensajes")
-                .whereEqualTo("video",url)
-                .whereIn("creador",seguidos)
-                .orderBy("momento", Query.Direction.ASCENDING)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                mensajes.add(document.toObject(Mensajes.class));
-                            }
-                            ejecutarTarea();
+                                                @Override
+                                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                                    if (error != null) {
+                                                        Log.w("listen:error", error);
+                                                        return;
+                                                    }
 
-                        } else {
-                            Log.d("Error getting documents: ", task.getException().toString());
-                        }
-                    }
-                });
+                                                    for (DocumentChange dc : value.getDocumentChanges()) {
+                                                        if (dc.getType().equals(DocumentChange.Type.ADDED)) {
+                                                            Mensajes m = dc.getDocument().toObject(Mensajes.class);
+                                                            if(m.getMomento()<t2){
+                                                                adapter.add(m);
+                                                            }
+                                                            mensajes.add(m);
+                                                        }
+                                                    }
+                                                }
+                                            });
+         ejecutarTarea();
 
     }
+
+
 
     public void crearMensaje(){
         String text = texto.getText().toString();
@@ -263,6 +277,9 @@ public class PlayerActivity extends YouTubeBaseActivity {
     public void onDestroy() {
         if (player != null) {
             player.release();
+        }
+        if(registration!=null){
+            registration.remove();
         }
         handler.removeCallbacksAndMessages(null);
         db.terminate();
