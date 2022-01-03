@@ -66,9 +66,12 @@ public class LoginActivity extends AppCompatActivity {
                                     error = getString(R.string.contraseña_incorrecta);
                                 }else if("ERROR_USER_NOT_FOUND".equals(code)){
                                     error = getString(R.string.usuario_incorrecto);
+                                }else if("ERROR_INVALID_EMAIL".equals(code)){
+                                    error = getString(R.string.correo_invalido);
                                 }
                             }
                             Toast.makeText(LoginActivity.this,error, Toast.LENGTH_LONG).show();
+
                         }
                     } );
         }
