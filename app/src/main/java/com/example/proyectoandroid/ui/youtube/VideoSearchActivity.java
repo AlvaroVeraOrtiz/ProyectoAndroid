@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
 
-public class VideoSearchActivity extends YouTubeBaseActivity {
+public class VideoSearchActivity extends AppCompatActivity {
     private ListView lvVideos;
     private EditText tvSearch;
     private List<SearchResult> videos;
