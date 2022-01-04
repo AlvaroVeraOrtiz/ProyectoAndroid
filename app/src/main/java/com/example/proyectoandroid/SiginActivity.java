@@ -98,4 +98,10 @@ public class SiginActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SiginActivity.this,LoginActivity.class));
+        finish();
+    }
+
 }

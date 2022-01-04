@@ -31,9 +31,15 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        correo = findViewById(R.id.correoDeUsuario);
-        password = findViewById(R.id.passwordDeUsuario);
+
+        if(!TextUtils.isEmpty(mauth.getUid())){
+            sacarUsuarioPorId(mauth.getUid());
+        }else{
+            setContentView(R.layout.activity_login);
+            correo = findViewById(R.id.correoDeUsuario);
+            password = findViewById(R.id.passwordDeUsuario);
+        }
+
     }
 
     public void iniciarSesion(View view) {
@@ -44,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         }else if(pass.length()<6){
             Toast.makeText(this,getString(R.string.contreseña_no_valida), Toast.LENGTH_LONG).show();
         }else{
-
             mauth.signInWithEmailAndPassword(email,pass)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>(){
                         @Override

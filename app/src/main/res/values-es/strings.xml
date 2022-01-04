@@ -63,4 +63,5 @@
     <string name="usuario_incorrecto">Usuario incorrecto</string>
     <string name="inicio_sesion_fallido">Ha ocurrido un error al iniciar sesión</string>
     <string name="correo_invalido">El correo introducido no es válido</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 </resources>
