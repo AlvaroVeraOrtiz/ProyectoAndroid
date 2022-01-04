@@ -2,9 +2,12 @@ package com.example.proyectoandroid.ui.youtube;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -67,7 +70,10 @@ public class VideoInfoActivity extends AppCompatActivity {
         btnCanal = findViewById(R.id.btnCanal);
         tvCanal = findViewById(R.id.tvCan);
         Glide.with(getApplicationContext()).load("https://img.youtube.com/vi/" + idVideo + "/0.jpg").into(btnMiniatura);
-        tvTitulo.setText(titulo);
+
+        Spanned s = Html.fromHtml(titulo, HtmlCompat.FROM_HTML_MODE_LEGACY);
+        tvTitulo.setText(s);
+
         tvCanal.setText(canal);
 
         try {

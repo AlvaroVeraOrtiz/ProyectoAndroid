@@ -1,12 +1,16 @@
 package com.example.proyectoandroid.ui.youtube;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.text.HtmlCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.proyectoandroid.R;
@@ -47,7 +51,9 @@ public class ResultAdapter extends BaseAdapter {
         SearchResult p = products.get(position);
         Glide.with(context).load("https://img.youtube.com/vi/" + p.getId().getVideoId() + "/0.jpg").into(image);
         TextView text = (TextView) view.findViewById(R.id.video_title);
-        text.setText(p.getSnippet().getTitle());
+
+        Spanned s = Html.fromHtml(p.getSnippet().getTitle(), HtmlCompat.FROM_HTML_MODE_LEGACY);
+        text.setText(s);
 
         return view;
     }
