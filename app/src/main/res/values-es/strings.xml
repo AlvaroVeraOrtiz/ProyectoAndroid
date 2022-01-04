@@ -68,4 +68,10 @@
     <string name="video_fallido">Fallo en el reproductor de vídeo</string>
     <string name="error_mensajes">No se ha podido cargar los mensajes</string>
     <string name="pregunta_cerrar_sesion">¿Desea cerrar sesión?</string>
+    <string name="descripcion_watch_later">Ver Más Tarde: Aquí se encuentran los vídeos que añadidos a la lista “ver más tarde”, cuyo objetivo es facilitar al usuario una forma de recordar los vídeos que quiere ver.</string>
+    <string name="descripcion_commented">Vídeos comentados: El usuario puede consultar en este apartado la lista de vídeos en los que ha dejado un comentario.</string>
+    <string name="descripcion_search_videos">Buscar Vídeos: Gracias a esta funcionalidad, el usuario será capaz de buscar vídeos subidos a Youtube para posteriormente añadirlos a su lista o para verlos y comentarlos.</string>
+    <string name="descripcion_following">Seguidos: El usuario podrá acceder a la lista de usuarios seguidos.</string>
+    <string name="descripcion_search_users">Buscar Usuarios: En este apartado es posible buscar nuevos usuarios para seguirlos.</string>
+    <string name="descripcion_logout">Cerrar Sesión: Cierra la sesión iniciada y vuelve a la ventana de inicio.</string>
 </resources>

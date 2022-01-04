@@ -67,4 +67,10 @@
     <string name="video_fallido">Video player Failed</string>
     <string name="error_mensajes">Couldn\'t load messages</string>
     <string name="pregunta_cerrar_sesion">Do you want to log out?</string>
+    <string name="descripcion_watch_later">Watch Later: This window lists the videos that you want to watch in the future.</string>
+    <string name="descripcion_commented">Commented videos: This window lists the videos commented by the user.</string>
+    <string name="descripcion_search_videos">Search Videos: In this window, you can search YouTube videos and add them later to your list or watch them and comment.</string>
+    <string name="descripcion_following">Followed: This window lists the followed users.</string>
+    <string name="descripcion_search_users">Search Users: In this window you can search users and follow them.</string>
+    <string name="descripcion_logout">Log out: Logs out from the application.</string>
 </resources>

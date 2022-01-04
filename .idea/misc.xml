@@ -3,16 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_baseline_watch_later_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/drawable/ic_youtube_social_white_squircle.xml" value="0.2703125" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_lista.xml" value="0.16041666666666668" />
+        <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_login.xml" value="0.24139492753623187" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_main.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_watch_later.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/app_bar_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_gallery.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.24139492753623187" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_mas_tarde.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_seguidos.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_slideshow.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/list_seguidos_item.xml" value="0.24139492753623187" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/list_view_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Usuario/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/seguido_item.xml" value="0.13020833333333334" />
@@ -51,13 +56,12 @@
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_player.xml" value="0.1" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_search_users.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_sigin.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_video_info.xml" value="0.2" />
+        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_video_info.xml" value="0.264" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_video_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_watch_later.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/activity_youtube.xml" value="0.17798913043478262" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/app_bar_main.xml" value="0.17798913043478262" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/content_main.xml" value="0.17798913043478262" />
-        <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/content_player.xml" value="0.7661290322580645" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alvar/Documents/GitHub/ProyectoAndroid/app/src/main/res/layout/fragment_mas_tarde.xml" value="0.16302083333333334" />
