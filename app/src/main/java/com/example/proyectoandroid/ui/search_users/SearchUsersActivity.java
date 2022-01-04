@@ -39,6 +39,9 @@ public class SearchUsersActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_users);
+
+        this.getSupportActionBar().setTitle(getString(R.string.search_users));
+
         tvSearch = findViewById(R.id.tvSearch);
         lvUsuarios = findViewById(R.id.lvUsuarios);
         tvSearch = findViewById(R.id.tvSearch);

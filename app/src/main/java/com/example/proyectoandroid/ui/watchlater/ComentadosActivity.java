@@ -40,6 +40,8 @@ public class ComentadosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch_later);
 
+        this.getSupportActionBar().setTitle(getString(R.string.comentados));
+
         Intent intento = getIntent();
         idUsuario = intento.getExtras().getString("idUsuario");
 

@@ -27,6 +27,8 @@ public class VideoSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_search);
 
+        this.getSupportActionBar().setTitle(getString(R.string.menu_youtube));
+
         lvVideos = findViewById(R.id.lvVideos);
         tvSearch = findViewById(R.id.tvSearch);
 

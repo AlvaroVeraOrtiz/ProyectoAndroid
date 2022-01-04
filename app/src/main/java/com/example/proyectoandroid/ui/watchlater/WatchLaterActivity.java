@@ -31,6 +31,8 @@ public class WatchLaterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch_later);
 
+        this.getSupportActionBar().setTitle(getString(R.string.watch_later));
+
         wlVideos = findViewById(R.id.wlVideos); //obtener el elemento de la interfaz
         mostrarVideos();
 
