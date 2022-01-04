@@ -1,6 +1,7 @@
 package com.example.proyectoandroid;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -75,7 +76,13 @@ public class LoginActivity extends AppCompatActivity {
                                     error = getString(R.string.correo_invalido);
                                 }
                             }
-                            Toast.makeText(LoginActivity.this,error, Toast.LENGTH_LONG).show();
+
+                            new AlertDialog.Builder(LoginActivity.this)
+                                    .setTitle(getString(R.string.error_inicio))
+                                    .setMessage(error)
+                                    .setNegativeButton(android.R.string.ok, null)
+                                    .show();
+
 
                         }
                     } );

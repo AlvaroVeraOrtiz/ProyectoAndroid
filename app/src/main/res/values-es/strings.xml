@@ -64,4 +64,8 @@
     <string name="inicio_sesion_fallido">Ha ocurrido un error al iniciar sesión</string>
     <string name="correo_invalido">El correo introducido no es válido</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="error_inicio">Error iniciando sesion</string>
+    <string name="video_fallido">Fallo en el reproductor de vídeo</string>
+    <string name="error_mensajes">No se ha podido cargar los mensajes</string>
+    <string name="pregunta_cerrar_sesion">¿Desea cerrar sesión?</string>
 </resources>

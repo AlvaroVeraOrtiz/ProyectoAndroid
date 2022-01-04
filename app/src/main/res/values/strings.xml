@@ -63,4 +63,8 @@
     <string name="deleteVerMasTarde">Remove from watch later</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="cerrar_sesion">Log out</string>
+    <string name="error_inicio">Log in error.</string>
+    <string name="video_fallido">Video player Failed</string>
+    <string name="error_mensajes">Couldn\'t load messages</string>
+    <string name="pregunta_cerrar_sesion">Do you want to log out?</string>
 </resources>

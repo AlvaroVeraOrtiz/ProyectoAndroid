@@ -1,5 +1,6 @@
 package com.example.proyectoandroid;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
 import com.example.proyectoandroid.Resources.Mensajes;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
@@ -119,7 +122,18 @@ public class PlayerActivity extends YouTubeBaseActivity {
                                                         YouTubeInitializationResult
                                                                 youTubeInitializationResult)
                     {
-                        Toast.makeText(getApplicationContext(), "Video player Failed", Toast.LENGTH_SHORT).show();
+
+                        new AlertDialog.Builder(PlayerActivity.this)
+                                .setTitle(getString(R.string.video_fallido))
+                                .setMessage(getString(R.string.video_fallido))
+                                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                        finish();
+                                    }
+                                })
+                                .show();
                     }
                 });
 
@@ -153,6 +167,12 @@ public class PlayerActivity extends YouTubeBaseActivity {
                             cargarMensajesBD(res, video);
 
 
+                        }else{
+                            new AlertDialog.Builder(PlayerActivity.this)
+                                    .setTitle(getString(R.string.error_mensajes))
+                                    .setMessage(getString(R.string.error_mensajes))
+                                    .setNegativeButton(android.R.string.ok,null)
+                                    .show();
                         }
                     }
                 });

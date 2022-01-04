@@ -1,5 +1,6 @@
 package com.example.proyectoandroid;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import com.example.proyectoandroid.Resources.SingletonMap;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -68,10 +70,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cerrarSesion(MenuItem item) {
-        FirebaseAuth.getInstance().signOut();
-        SingletonMap.getInstance().remove("usuario");
-        startActivity(new Intent(MainActivity.this,LoginActivity.class));
-        finish();
+
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.cerrar_sesion))
+                .setMessage(getString(R.string.pregunta_cerrar_sesion))
+                .setNegativeButton(android.R.string.no,null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        SingletonMap.getInstance().remove("usuario");
+                        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                        finish();
+                    }
+                })
+                .show();
+
     }
 
 
