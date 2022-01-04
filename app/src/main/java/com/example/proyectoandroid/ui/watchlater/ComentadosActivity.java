@@ -3,12 +3,10 @@ package com.example.proyectoandroid.ui.watchlater;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.proyectoandroid.LoginActivity;
 import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
 import com.example.proyectoandroid.Resources.YoutubeAPI;
-import com.example.proyectoandroid.ui.seguidos.UsuarioAdapter;
 import com.example.proyectoandroid.ui.youtube.VideoInfoActivity;
 import com.example.proyectoandroid.ui.youtube.VideoListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;

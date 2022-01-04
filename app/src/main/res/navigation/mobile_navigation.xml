@@ -42,6 +42,6 @@
         android:id="@+id/comentadosActivity"
         android:name="com.example.proyectoandroid.ui.watchlater.ComentadosActivity"
         android:label="activity_comentados"
-        tools:layout="@layout/activity_comentados" />
+        tools:layout="@layout/activity_watch_later" />
 
 </navigation>

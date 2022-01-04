@@ -8,25 +8,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.proyectoandroid.R;
-import com.example.proyectoandroid.Resources.FirestoreBD;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
-import com.example.proyectoandroid.Resources.YoutubeAPI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.api.services.youtube.model.SearchResult;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,7 +31,6 @@ public class SeguidosFragment extends Fragment {
 
 
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private FirebaseFirestore db;
     private ListView seguidosView;

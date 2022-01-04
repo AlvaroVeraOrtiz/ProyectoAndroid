@@ -1,9 +1,8 @@
-package com.example.proyectoandroid;
+package com.example.proyectoandroid.ui.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +12,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyectoandroid.MainActivity;
+import com.example.proyectoandroid.R;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
-import com.example.proyectoandroid.ui.login.LoginFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                     SingletonMap sm = SingletonMap.getInstance();
                     sm.put("usuario",user);
 
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
                 }else{
                     Toast.makeText(LoginActivity.this,getString(R.string.recuperacion_fallida), Toast.LENGTH_LONG).show();

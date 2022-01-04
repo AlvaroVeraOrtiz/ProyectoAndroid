@@ -3,7 +3,6 @@ package com.example.proyectoandroid.ui.seguidos;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -20,20 +19,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.proyectoandroid.PlayerActivity;
 import com.example.proyectoandroid.R;
-import com.example.proyectoandroid.Resources.Mensajes;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
 import com.example.proyectoandroid.ui.watchlater.ComentadosActivity;
-import com.example.proyectoandroid.ui.watchlater.WatchLaterActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 

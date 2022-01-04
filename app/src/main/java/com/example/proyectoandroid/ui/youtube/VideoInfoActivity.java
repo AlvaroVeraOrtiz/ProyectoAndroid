@@ -15,13 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.proyectoandroid.PlayerActivity;
 import com.example.proyectoandroid.R;
-import com.example.proyectoandroid.Resources.FirestoreBD;
 import com.example.proyectoandroid.Resources.SingletonMap;
 import com.example.proyectoandroid.Resources.Usuario;
 import com.example.proyectoandroid.Resources.YoutubeAPI;
-import com.example.proyectoandroid.SiginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.api.services.youtube.model.Channel;
