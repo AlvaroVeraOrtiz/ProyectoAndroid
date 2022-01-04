@@ -53,7 +53,7 @@
     <string name="envio_exitoso">Sent.</string>
     <string name="envio_fallido">Error sending.</string>
     <string name="seguir">Follow</string>
-    <string name="comentados">Commented</string>
+    <string name="comentados">Commented videos</string>
     <string name="videos">videos</string>
     <string name="addVerMasTarde">Add to watch later</string>
     <string name="contraseña_incorrecta">Incorrect password</string>
