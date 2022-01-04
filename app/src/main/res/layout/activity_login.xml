@@ -62,7 +62,6 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:onClick="iniciarSesion"
-            android:paddingBottom="20dp"
             android:text="@string/inicio" />
 
         <Button
