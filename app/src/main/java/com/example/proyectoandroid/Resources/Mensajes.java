@@ -6,7 +6,7 @@ import com.google.firebase.Timestamp;
 
 import java.text.SimpleDateFormat;
 
-public class Mensajes {
+public class Mensajes implements Comparable<Mensajes> {
     private String creador;
     private String contenido;
     private String nombreCreador;
@@ -62,5 +62,11 @@ public class Mensajes {
     }
 
     public Mensajes() {
+    }
+
+    @Override
+    public int compareTo(Mensajes o) {
+        long res = momento-o.getMomento();
+        return (int)res;
     }
 }

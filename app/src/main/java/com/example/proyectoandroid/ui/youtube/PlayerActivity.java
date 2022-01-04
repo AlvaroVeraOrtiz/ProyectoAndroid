@@ -39,6 +39,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -283,6 +284,7 @@ public class PlayerActivity extends YouTubeBaseActivity {
     public void filtrar(){
         if(t1>t2){
             adapter.clear();
+            Collections.sort(mensajes);
             t1 = 0;
         }
 
