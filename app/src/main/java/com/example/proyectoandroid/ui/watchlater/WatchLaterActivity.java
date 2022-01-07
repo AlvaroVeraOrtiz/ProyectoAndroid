@@ -59,8 +59,9 @@ public class WatchLaterActivity extends AppCompatActivity {
     {
         //Lista con las ids
         List<String> busqueda = new ArrayList<>();
-        /*Rellena aquí tu lista*/
 
+        //Se obtiene la lista de videos de ver más tarde del usuario activo
+        //y se llama a la API de Youtube para que busque los datos.
         SingletonMap sm = SingletonMap.getInstance();
         Usuario usuario = (Usuario) sm.get("usuario");
         if(usuario!= null && usuario.getVerMasTarde()!=null){

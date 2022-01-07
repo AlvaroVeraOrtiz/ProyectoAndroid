@@ -45,6 +45,8 @@ public class ComentadosActivity extends AppCompatActivity {
         Intent intento = getIntent();
         idUsuario = intento.getExtras().getString("idUsuario");
 
+        //Si se ha pasado un usuario al crear la actividad se cargan los mensajes comentados por
+        //ese usuario, en caso contrario se asume que se quieren los del usuario activo
         if(idUsuario==null || idUsuario.isEmpty()){
             Usuario u = (Usuario) SingletonMap.getInstance().get("usuario");
             idUsuario = u.getUid();
@@ -53,6 +55,8 @@ public class ComentadosActivity extends AppCompatActivity {
         wlVideos = findViewById(R.id.wlVideos); //obtener el elemento de la interfaz
         cargarVideos();
 
+        //Cuando se pulsa un elemento se carga una actividad con la información del video
+        //de ese elemento.
         wlVideos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -72,8 +76,10 @@ public class ComentadosActivity extends AppCompatActivity {
         });
     }
 
-    private void cargarVideos() //View view
-    {
+    private void cargarVideos(){
+        /*
+         * Cargamos los videos en los que ha comentado el usuario de la BD.
+         */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("mensajes")
                 .whereEqualTo("creador",idUsuario)
@@ -87,6 +93,8 @@ public class ComentadosActivity extends AppCompatActivity {
                                 String v = document.get("video",String.class);
                                 comentados.add(v);
                             }
+                            //Una vez que tenemos la url de los videos se buscan los datos en la api
+                            //de Youtube.
                             mostrarVideos(comentados);
 
                         }else{

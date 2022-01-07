@@ -143,7 +143,7 @@ public class PlayerActivity extends YouTubeBaseActivity {
     }
 
     private void cargarSeguidos(String video){
-        /**
+        /*
          *  Función que toma carga el id del usuario y devuelve los ids de los que sigue.
          */
         SingletonMap sm = SingletonMap.getInstance();
@@ -165,6 +165,8 @@ public class PlayerActivity extends YouTubeBaseActivity {
 
                             res.add(usuario.getUid());
 
+                            //Una vez que tenemos los usuarios seguidos cargamos los mensajes
+                            //de esos usuarios en el video.
                             cargarMensajesBD(res, video);
 
 
@@ -180,7 +182,10 @@ public class PlayerActivity extends YouTubeBaseActivity {
     }
 
     public void cargarMensajesBD(List<String> seguidos, String url){
-
+        /*
+         * Creamos un EventListener sobre la BD, esto nos proporciona los mensajes ya existentes
+         * y aquellos que se crean mientras el usuario está viendo el video.
+         */
          registration = db.collection("mensajes")
                                     .whereEqualTo("video",url)
                                     .whereIn("creador",seguidos)
@@ -197,6 +202,9 @@ public class PlayerActivity extends YouTubeBaseActivity {
 
                                                     for (DocumentChange dc : value.getDocumentChanges()) {
                                                         if (dc.getType().equals(DocumentChange.Type.ADDED)) {
+                                                            //Si el evento es un mensaje que se ha añadido lo añadimos
+                                                            //a la lista
+
                                                             Mensajes m = dc.getDocument().toObject(Mensajes.class);
                                                             if(m.getMomento()<t2){
                                                                 adapter.add(m);
@@ -206,6 +214,8 @@ public class PlayerActivity extends YouTubeBaseActivity {
                                                     }
                                                 }
                                             });
+         //Una vez cargados los mensajes ejecutamos una tarea periodica que añade los mensajes
+         //que tocan en ese momento a la vista.
          ejecutarTarea();
 
     }
@@ -213,6 +223,8 @@ public class PlayerActivity extends YouTubeBaseActivity {
 
 
     public void crearMensaje(){
+        //Esta función es la que se ejecutará cuando se pulse enviar en la actividad.
+        //Se extrae el texto y si no es nulo se que cargan los datos en la actividad.
         String text = texto.getText().toString();
         if(!TextUtils.isEmpty(text) && player!=null && !current.equals("")){
             enviar.setEnabled(false);
@@ -248,7 +260,8 @@ public class PlayerActivity extends YouTubeBaseActivity {
         }
     }
 
-
+    //Tarea que se ejecuta de forma periodica y tiene como objetivo mostrar solo los comentarios
+    //que deberían salir entre el momento anterior del video y el actual.
     public void ejecutarTarea() {
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -263,9 +276,11 @@ public class PlayerActivity extends YouTubeBaseActivity {
 
     }
 
-    //En lugar de ser un flitro dentro del adapter,
-    //hemos considerado que es mejor añadir solo los mensajes nuevos entre tiempos de ejecución
-    //para reducir el número de veces que hay que refrescar la lista.
+    /*
+     * En lugar de ser un filtro dentro del adapter,
+     * hemos considerado que es mejor añadir solo los mensajes nuevos entre tiempos de ejecución
+     * para reducir el número de veces que hay que refrescar la lista.
+     */
     private void aplicarFiltro() {
         if(player!=null){
 
@@ -282,6 +297,11 @@ public class PlayerActivity extends YouTubeBaseActivity {
     }
 
     public void filtrar(){
+        /*
+         * Añadimos al adapte los mensajes que ocurren entre el instante anterior del video
+         * y el actual.
+         */
+
         if(t1>t2){
             adapter.clear();
             Collections.sort(mensajes);
@@ -297,6 +317,11 @@ public class PlayerActivity extends YouTubeBaseActivity {
     }
     @Override
     public void onDestroy() {
+        /*
+         * Cerramos el player, el listener de la base de datos y
+         * la tarea periodica de esta actividad.
+         */
+
         if (player != null) {
             player.release();
         }

@@ -36,6 +36,7 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
 
     List<String> seguidos;
     private LayoutInflater mInflater;
+
     public UsuarioAdapter(@NonNull Context context, int resource, @NonNull List<Usuario> objects,List<Usuario> seguidos) {
         super(context, resource, objects);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,8 +49,13 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        /*
+         * Indica como se muestra cada elemento de la lista de usuarios.
+         */
 
         View view = mInflater.inflate(R.layout.list_seguidos_item, null, false);
+
+        //El contenido del texto del elemento es el correo del usuario.
 
         TextView text = (TextView) view.findViewById(R.id.usuario_item);
         Usuario u = this.getItem(position);
@@ -59,13 +65,17 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
         t.setSpan(new StyleSpan(Typeface.BOLD), 0, len , Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         t.setSpan(new ForegroundColorSpan(color(u.getUid())),0,len,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         text.setText(t);
-        ImageButton b = (ImageButton) view.findViewById(R.id.videos_comentarios);
 
+        //Se definen los 2 botones del elemento y su comportamiento
+
+        //Este botón carga la lista de comentarios del usuario en otra actividad.
+        ImageButton b = (ImageButton) view.findViewById(R.id.videos_comentarios);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Cambiar tipo de activity
+
+                //Cambiamos de actividad
                 Intent intento = new Intent(getContext(), ComentadosActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("idUsuario",u.getUid());
@@ -75,16 +85,17 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
             }
         });
 
-
-
-
+        //Deja o empieza a seguir al usuario según su lo seguía o no antes.
         ImageButton ib = (ImageButton) view.findViewById(R.id.seguir_button);
 
+        //En caso de que no lo siguiera cambiamos el icono por defecto.
         if(!seguidos.contains(u.getEmail())){
             ib.setImageDrawable(getContext().getDrawable(R.drawable.ic_baseline_person_add_24));
             Log.d("El correo",u.getEmail());
 
         }
+        //Añadimos el comportamiento del botón, en este caso cambiar el icono al correspondiente
+        //y modificar el elemento en la base de datos.
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,6 +116,10 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
     }
 
     private void addSeguido(Usuario u, ImageButton button) {
+        /*
+         * Función que añade un usuario a la lista de seguidos del usuario activo,
+         * tanto en local como en la BD.
+         */
         seguidos.add(u.getEmail());
         SingletonMap sm = SingletonMap.getInstance();
         Usuario usuario = (Usuario) sm.get("usuario");
@@ -139,6 +154,10 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
     }
 
     private void deleteSeguido(Usuario u, ImageButton button) {
+        /*
+         * Función que elimina un usuario de la lista de seguidos del usuario activo,
+         * tanto en local como en la BD.
+         */
         seguidos.remove(u.getEmail());
         SingletonMap sm = SingletonMap.getInstance();
         Usuario usuario = (Usuario) sm.get("usuario");
@@ -166,6 +185,9 @@ public class UsuarioAdapter extends ArrayAdapter<Usuario> {
     }
 
     private int color(String s){
+        /*
+         * Asignamos un color único a cada usuario
+         */
         int min = 0xff0000ff;
         int max = 0xffffff00;
         return (s.hashCode()%(max-min))+min;

@@ -5,7 +5,7 @@ import android.os.Message;
 import com.google.firebase.Timestamp;
 
 import java.text.SimpleDateFormat;
-
+//Un objeto de esta clase representa a un mensaje en la base de datos.
 public class Mensajes implements Comparable<Mensajes> {
     private String creador;
     private String contenido;

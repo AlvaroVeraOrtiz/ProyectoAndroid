@@ -37,6 +37,10 @@ public class SiginActivity extends AppCompatActivity {
     }
 
     public void crearCuenta(View view) {
+        /*
+         * Crea la cuenta con los datos introducidos.
+         * En caso de ser datos no válidos se notifica al usuario.
+         */
         String email = correo.getText().toString();
         String pass = password.getText().toString();
         String nom = nombre.getText().toString();
@@ -53,7 +57,7 @@ public class SiginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-
+                        //Una vez registrado en el apartado de autenticación, se guardan en la BD.
                         guardarUsuarioBD(task.getResult().getUser().getUid(),email,nom);
 
                     } else {
@@ -68,7 +72,11 @@ public class SiginActivity extends AppCompatActivity {
         }
     }
     private void guardarUsuarioBD(String uid, String email, String nom){
-
+        /*
+         * Esta función guarda los datos del usuario en la BD.
+         * El procedimiento en Firestore es siempre el mismo, se crea un map
+         * que representa el objeto y sus atributos y estos se guardan en un documento.
+         */
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String,Object> usuario = new HashMap<>();
@@ -79,6 +87,7 @@ public class SiginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
+                    //Una vez guardados los datos en la BD se crea el usuario en local
                     Toast.makeText(SiginActivity.this, getString(R.string.guardando_datos), Toast.LENGTH_LONG).show();
                     crearUsuario(uid, email, nom);
                 }else{
@@ -90,16 +99,30 @@ public class SiginActivity extends AppCompatActivity {
 
     }
     private void crearUsuario(String uid, String email, String nom) {
+        /*
+         * Esta función crea una copia local del usuario que se almacena en
+         * el SingletonMap para posteriormente poder usar esos datos en el
+         * resto de la aplicación.
+         */
         Toast.makeText(SiginActivity.this, getString(R.string.registro_exitoso), Toast.LENGTH_LONG).show();
+
+        //Se consigue la instancia del SingletonMap y se inserta el usuario en él.
         SingletonMap sm = SingletonMap.getInstance();
         Usuario us = new Usuario(uid,email,nom);
         sm.put("usuario",us);
+
+        //Una vez guardado el usuario en el SingletonMap se pasa a la actividad principal.
         startActivity(new Intent(SiginActivity.this, MainActivity.class));
         finish();
     }
 
     @Override
     public void onBackPressed() {
+        /*
+         * Reescribimos el comportamiento de pulsar hacia atrás.
+         * Si no lo hicieramos se cerraría la app al pulsar hacia atrás en el registro,
+         * dado que no queremos tener la actividad de login y de registro activas a la vez.
+         */
         startActivity(new Intent(SiginActivity.this,LoginActivity.class));
         finish();
     }

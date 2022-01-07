@@ -40,8 +40,14 @@ public class MensajesAdapter extends ArrayAdapter<Mensajes> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        /*
+         * Define como se va a ver cada elemento de la lista.
+         */
 
         View view = mInflater.inflate(R.layout.list_mensajes_item, null, false);
+
+        //El texto de cada mensaje es una concatenación del nombre se creador, el momento en el
+        //que se hizo en formato HH:mm:ss y el contenido del mismo.
 
         TextView text = (TextView) view.findViewById(R.id.mensaje_item);
         Mensajes m = this.getItem(position);
@@ -59,6 +65,10 @@ public class MensajesAdapter extends ArrayAdapter<Mensajes> {
     }
 
     private String momento(long momento){
+        /*
+         * Esta función simplemente convierte cada momento (tiempo en ms)
+         * a un string en el formato que se quiere para la visualización.
+         */
         StringJoiner res= new StringJoiner(":","(",")");
         momento = momento/1000;
 
@@ -75,54 +85,12 @@ public class MensajesAdapter extends ArrayAdapter<Mensajes> {
     }
 
     private int color(String s){
+        /*
+         * Asignamos a cada usuario un color en base a su id
+         */
         int min = 0xff0000ff;
         int max = 0xffffff00;
         return (s.hashCode()%(max-min))+min;
     }
 
-
-    /*
-    @Override
-    public Filter getFilter() {
-        if (filter == null){
-            filter  = new MensajeFilter();
-        }
-        return filter;
-    }
-    private class MensajeFilter extends Filter {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults result = new FilterResults();
-            int value = 0;
-            try{
-                value = Integer.parseInt(constraint.toString());
-                ArrayList<Mensajes> filteredItems = new ArrayList<>();
-                for(int i = 0; i<originales.size();i++){
-                    if(originales.get(i).getMomento()<=value){
-                        filteredItems.add(originales.get(i));
-                    }
-                }
-                result.count = filteredItems.size();
-                result.values = filteredItems;
-
-            }catch (Exception e){
-
-                result.values = originales;
-                result.count = originales.size();
-
-            }
-
-            return result;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            clear();
-            filtrados = (ArrayList<Mensajes>)results.values;
-            addAll((ArrayList<Mensajes>)results.values);
-            notifyDataSetChanged();
-        }
-
-    }*/
 }

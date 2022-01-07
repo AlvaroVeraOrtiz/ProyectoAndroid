@@ -48,7 +48,11 @@ public class SearchUsersActivity extends AppCompatActivity
     }
 
     public void iniciarBusqueda(View view) {
+        /*
+         * Función que se activa al pulsar el botón de búsqueda.
+         */
 
+        //Si no se han extraido los datos se extraen, en otro caso solo se filtra.
         if(seguidos==null || usuarios==null){
             idsSiguiendo();
         }else{
@@ -61,13 +65,14 @@ public class SearchUsersActivity extends AppCompatActivity
             }
         }
 
-
     }
 
     private void idsSiguiendo(){
-        /**
-         *  Función que toma el id del usuario y devuelve los ids de los que sigue.
+        /*
+         * Función que toma el id del usuario y devuelve los ids de los que sigue.
+         * Información necesaria para permitir dejar de seguir o seguir desde la propia busqueda.
          */
+
         SingletonMap sm = SingletonMap.getInstance();
         Usuario u = (Usuario) sm.get("usuario");
         //Buscamos los usuarios seguidos y devolvemos sus ids.
@@ -88,6 +93,8 @@ public class SearchUsersActivity extends AppCompatActivity
                                 Log.d("Seguidos",u.getEmail());
                                 seguidos.add(u);
                             }
+                            //Una vez tenemos los usuarios seguidos cargamos todos los usuarios en
+                            //general.
                             usuarios();
 
                         }
@@ -96,9 +103,14 @@ public class SearchUsersActivity extends AppCompatActivity
     }
 
     private void usuarios(){
+        /*
+         * Cargamos los usuarios de la BD, esto se debe a una limitación de Firestore que
+         * impide hacer queries en las que un campo String contenga a otro String.
+         */
+
         SingletonMap sm = SingletonMap.getInstance();
         Usuario u = (Usuario) sm.get("usuario");
-        //Buscamos los usuarios seguidos y devolvemos sus ids.
+        //Buscamos los usuarios que no sean el actual.
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("usuarios")
                 .whereNotEqualTo("email",u.getEmail())

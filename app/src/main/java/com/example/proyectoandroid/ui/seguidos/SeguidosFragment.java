@@ -29,9 +29,6 @@ import java.util.List;
  */
 public class SeguidosFragment extends Fragment {
 
-
-
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private FirebaseFirestore db;
     private ListView seguidosView;
     private UsuarioAdapter listViewAdapter;
@@ -46,7 +43,6 @@ public class SeguidosFragment extends Fragment {
      * this fragment using the provided parameters.
      * @return A new instance of fragment SeguidosFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static SeguidosFragment newInstance() {
         SeguidosFragment fragment = new SeguidosFragment();
         Bundle args = new Bundle();

@@ -2,6 +2,7 @@ package com.example.proyectoandroid.Resources;
 
 import java.util.List;
 
+//Objeto que representa a un usuario de la base de datos.
 public class Usuario {
     private String uid="";
     private String email="";
