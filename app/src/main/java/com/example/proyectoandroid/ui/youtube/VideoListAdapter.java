@@ -15,6 +15,7 @@ import com.google.api.services.youtube.model.Video;
 
 import java.util.List;
 
+//Adaptador personalizado para los videos de youtube
 public class VideoListAdapter extends BaseAdapter {
     private List<Video> products;
     private Context context;
@@ -39,6 +40,7 @@ public class VideoListAdapter extends BaseAdapter {
         return position;
     }
 
+    //Carga el adaptador de los items para la listView
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

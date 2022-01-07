@@ -27,9 +27,6 @@
             android:name=".ui.watchlater.WatchLaterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.youtube.ListaActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.youtube.PlayerActivity"
             android:exported="false"
             android:label="@string/title_activity_player"

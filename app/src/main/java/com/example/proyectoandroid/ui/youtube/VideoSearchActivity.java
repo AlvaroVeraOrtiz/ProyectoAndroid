@@ -32,6 +32,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         lvVideos = findViewById(R.id.lvVideos);
         tvSearch = findViewById(R.id.tvSearch);
 
+        //Al pinchar un item de la listview, envía los datos del vídeo a la ventana de información
         lvVideos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -53,6 +54,7 @@ public class VideoSearchActivity extends AppCompatActivity {
 
     }
 
+    //Espera a la búsqueda de vídeos y los añade a la listview
     public void iniciarBusqueda(View view) {
 
         Buscador buscador = new Buscador(tvSearch.getText().toString());
@@ -68,6 +70,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         lvVideos.setAdapter(adaptador);
     }
 
+    //Hebra que busca los vídeos mediante el parámetro especificado
     private class Buscador extends Thread {
 
         private String busqueda;

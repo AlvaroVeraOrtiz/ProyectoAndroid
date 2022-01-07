@@ -43,6 +43,7 @@ public class ResultAdapter extends BaseAdapter {
         return position;
     }
 
+    //Para cada elemento del adaptador, carga una imagen y un texto
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

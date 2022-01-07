@@ -62,6 +62,8 @@ public class YoutubeAPI {
     public static String getBusquedaAPI() {
         return busquedaAPI;
     }
+
+    //Busca vídeos en youtube a partir de su título
     public static List<SearchResult> buscaVideos(String titulo) throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
@@ -71,6 +73,7 @@ public class YoutubeAPI {
         return response.getItems();
     }
 
+    //Busca un vídeo a partir de su id
     public static Video getVideo(String id) throws GeneralSecurityException, IOException {
         YouTube youtubeService = getService();
         // Define and execute the API request
@@ -80,6 +83,7 @@ public class YoutubeAPI {
         return response.getItems().get(0);
     }
 
+    //Busca un canal a partir de su id
     public static Channel getCanal(String id) throws IOException, GeneralSecurityException {
         YouTube youtubeService = getService();
         // Define and execute the API request
@@ -89,6 +93,7 @@ public class YoutubeAPI {
         return response.getItems().get(0);
     }
 
+    //Busca múltiples vídeos en youtube a partir de sus ids
     public static List<Video> getListaVideos(List<String> ids) throws GeneralSecurityException, IOException {
 
 
@@ -128,13 +133,5 @@ public class YoutubeAPI {
         return res;
     }
 
-    /*public static void main(String[] args)
-            throws GeneralSecurityException, IOException, GoogleJsonResponseException {
-        YouTube youtubeService = getService();
-        // Define and execute the API request
-        YouTube.Search.List request = youtubeService.search()
-                .list("snippet");
-        SearchListResponse response = request.setQ("titulo").execute();
-        System.out.println(response);
-    }*/
+
 }

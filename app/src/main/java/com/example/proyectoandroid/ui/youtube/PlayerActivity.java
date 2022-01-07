@@ -88,7 +88,7 @@ public class PlayerActivity extends YouTubeBaseActivity {
 
         String video = getIntent().getExtras().getString("idVideo");
 
-        // Get reference to the view of Video player
+        // Crea el reproductor
         YouTubePlayerView ytPlayer = (YouTubePlayerView)findViewById(R.id.ytPlayer);
 
         ytPlayer.initialize(
@@ -100,6 +100,8 @@ public class PlayerActivity extends YouTubeBaseActivity {
                     // link that you want to play In here we
                     // also handle the play and pause
                     // functionality
+
+                    //Inicializa la reproducción
                     @Override
                     public void onInitializationSuccess(
                             YouTubePlayer.Provider provider,

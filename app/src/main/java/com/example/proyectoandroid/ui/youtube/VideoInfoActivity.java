@@ -94,6 +94,7 @@ public class VideoInfoActivity extends AppCompatActivity {
 
     }
 
+    //Añade el vídeo a ver más tarde o lo borra de la lista
     public void addDeleteVerMasTarde(View view) {
         btnVerMasTarde.setEnabled(false);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
